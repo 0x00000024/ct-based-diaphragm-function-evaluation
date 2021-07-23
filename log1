@@ -1,0 +1,807 @@
+The area of a pixel (unit: m^2):  8.400000000000001e-08
+The area of a pixel (unit: cm^2):  0.0008400000000000001
+Slice Thickness (unit: m):  0.0006
+Slice Thickness (unit: cm):  0.06
+
+images/original/IM-0001-0305.jpg
+The current cross-sectional area of the lung (unit: pixel):  66558.5
+The current cross-sectional area of the lung (unit: cm^2):  55.90914000000001
+The volume of the current slice of the lung (unit: cm^3):  3.3545484
+[INFO] Complete lung volume:  3.3545484
+images/original/IM-0001-0318.jpg
+The current cross-sectional area of the lung (unit: pixel):  63449.0
+The current cross-sectional area of the lung (unit: cm^2):  53.297160000000005
+The volume of the current slice of the lung (unit: cm^3):  3.1978296000000004
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.15671879999999971
+
+images/original/IM-0001-0330.jpg
+The current cross-sectional area of the lung (unit: pixel):  53619.5
+The current cross-sectional area of the lung (unit: cm^2):  45.04038000000001
+The volume of the current slice of the lung (unit: cm^3):  2.7024228000000003
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.6521255999999997
+
+images/original/IM-0001-0324.jpg
+The current cross-sectional area of the lung (unit: pixel):  54395.5
+The current cross-sectional area of the lung (unit: cm^2):  45.692220000000006
+The volume of the current slice of the lung (unit: cm^3):  2.7415332
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.6130152
+
+images/original/IM-0001-0325.jpg
+The current cross-sectional area of the lung (unit: pixel):  56964.5
+The current cross-sectional area of the lung (unit: cm^2):  47.85018
+The volume of the current slice of the lung (unit: cm^3):  2.8710107999999996
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.48353760000000046
+
+images/original/IM-0001-0331.jpg
+The current cross-sectional area of the lung (unit: pixel):  48697.5
+The current cross-sectional area of the lung (unit: cm^2):  40.90590000000001
+The volume of the current slice of the lung (unit: cm^3):  2.4543540000000004
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.9001943999999997
+
+images/original/IM-0001-0319.jpg
+The current cross-sectional area of the lung (unit: pixel):  60296.0
+The current cross-sectional area of the lung (unit: cm^2):  50.64864000000001
+The volume of the current slice of the lung (unit: cm^3):  3.0389184000000005
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.31562999999999963
+
+images/original/IM-0001-0327.jpg
+The current cross-sectional area of the lung (unit: pixel):  56881.5
+The current cross-sectional area of the lung (unit: cm^2):  47.780460000000005
+The volume of the current slice of the lung (unit: cm^3):  2.8668276
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.48772079999999995
+
+images/original/IM-0001-0333.jpg
+The current cross-sectional area of the lung (unit: pixel):  49052.0
+The current cross-sectional area of the lung (unit: cm^2):  41.20368
+The volume of the current slice of the lung (unit: cm^3):  2.4722207999999997
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.8823276000000004
+
+images/original/IM-0001-0332.jpg
+The current cross-sectional area of the lung (unit: pixel):  50349.5
+The current cross-sectional area of the lung (unit: cm^2):  42.293580000000006
+The volume of the current slice of the lung (unit: cm^3):  2.5376148
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.8169336
+
+images/original/IM-0001-0326.jpg
+The current cross-sectional area of the lung (unit: pixel):  54473.0
+The current cross-sectional area of the lung (unit: cm^2):  45.75732000000001
+The volume of the current slice of the lung (unit: cm^3):  2.7454392000000003
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.6091091999999998
+
+images/original/IM-0001-0322.jpg
+The current cross-sectional area of the lung (unit: pixel):  56756.5
+The current cross-sectional area of the lung (unit: cm^2):  47.67546000000001
+The volume of the current slice of the lung (unit: cm^3):  2.8605276
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.4940207999999999
+
+images/original/IM-0001-0336.jpg
+The current cross-sectional area of the lung (unit: pixel):  43869.0
+The current cross-sectional area of the lung (unit: cm^2):  36.84996
+The volume of the current slice of the lung (unit: cm^3):  2.2109976
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.1435508000000003
+
+images/original/IM-0001-0337.jpg
+The current cross-sectional area of the lung (unit: pixel):  42944.5
+The current cross-sectional area of the lung (unit: cm^2):  36.07338
+The volume of the current slice of the lung (unit: cm^3):  2.1644028
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.1901456000000001
+
+images/original/IM-0001-0323.jpg
+The current cross-sectional area of the lung (unit: pixel):  61955.0
+The current cross-sectional area of the lung (unit: cm^2):  52.04220000000001
+The volume of the current slice of the lung (unit: cm^3):  3.122532
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.2320164
+
+images/original/IM-0001-0335.jpg
+The current cross-sectional area of the lung (unit: pixel):  44568.5
+The current cross-sectional area of the lung (unit: cm^2):  37.437540000000006
+The volume of the current slice of the lung (unit: cm^3):  2.2462524
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.1082960000000002
+
+images/original/IM-0001-0321.jpg
+The current cross-sectional area of the lung (unit: pixel):  57881.5
+The current cross-sectional area of the lung (unit: cm^2):  48.62046000000001
+The volume of the current slice of the lung (unit: cm^3):  2.9172276000000004
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.43732079999999973
+
+images/original/IM-0001-0309.jpg
+The current cross-sectional area of the lung (unit: pixel):  69434.5
+The current cross-sectional area of the lung (unit: cm^2):  58.32498000000001
+The volume of the current slice of the lung (unit: cm^3):  3.4994988000000005
+[ERROR] IM-0001-0309.jpg | Volume: 3.4994988000000005  > complete lung volume: 3.3545484
+images/original/IM-0001-0308.jpg
+The current cross-sectional area of the lung (unit: pixel):  70244.0
+The current cross-sectional area of the lung (unit: cm^2):  59.004960000000004
+The volume of the current slice of the lung (unit: cm^3):  3.5402976
+[ERROR] IM-0001-0308.jpg | Volume: 3.5402976  > complete lung volume: 3.3545484
+images/original/IM-0001-0320.jpg
+The current cross-sectional area of the lung (unit: pixel):  57878.5
+The current cross-sectional area of the lung (unit: cm^2):  48.61794000000001
+The volume of the current slice of the lung (unit: cm^3):  2.9170764000000005
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.43747199999999964
+
+images/original/IM-0001-0334.jpg
+The current cross-sectional area of the lung (unit: pixel):  47512.0
+The current cross-sectional area of the lung (unit: cm^2):  39.91008000000001
+The volume of the current slice of the lung (unit: cm^3):  2.3946048
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.9599435999999999
+
+images/original/IM-0001-0390.jpg
+The current cross-sectional area of the lung (unit: pixel):  10644.0
+The current cross-sectional area of the lung (unit: cm^2):  8.940960000000002
+The volume of the current slice of the lung (unit: cm^3):  0.5364576000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8180908000000002
+
+images/original/IM-0001-0384.jpg
+The current cross-sectional area of the lung (unit: pixel):  12792.0
+The current cross-sectional area of the lung (unit: cm^2):  10.745280000000001
+The volume of the current slice of the lung (unit: cm^3):  0.6447168
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.7098316000000002
+
+images/original/IM-0001-0409.jpg
+The current cross-sectional area of the lung (unit: pixel):  8473.0
+The current cross-sectional area of the lung (unit: cm^2):  7.117320000000001
+The volume of the current slice of the lung (unit: cm^3):  0.42703920000000006
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.9275092000000003
+
+images/original/IM-0001-0353.jpg
+The current cross-sectional area of the lung (unit: pixel):  37862.0
+The current cross-sectional area of the lung (unit: cm^2):  31.804080000000006
+The volume of the current slice of the lung (unit: cm^3):  1.9082448000000003
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.4463035999999998
+
+images/original/IM-0001-0347.jpg
+The current cross-sectional area of the lung (unit: pixel):  41971.5
+The current cross-sectional area of the lung (unit: cm^2):  35.256060000000005
+The volume of the current slice of the lung (unit: cm^3):  2.1153636
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.2391848000000003
+
+images/original/IM-0001-0346.jpg
+The current cross-sectional area of the lung (unit: pixel):  39645.5
+The current cross-sectional area of the lung (unit: cm^2):  33.302220000000005
+The volume of the current slice of the lung (unit: cm^3):  1.9981332
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.3564152
+
+images/original/IM-0001-0420.jpg
+The current cross-sectional area of the lung (unit: pixel):  19944.5
+The current cross-sectional area of the lung (unit: cm^2):  16.753380000000003
+The volume of the current slice of the lung (unit: cm^3):  1.0052028000000002
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.3493456
+
+images/original/IM-0001-0352.jpg
+The current cross-sectional area of the lung (unit: pixel):  35653.0
+The current cross-sectional area of the lung (unit: cm^2):  29.948520000000006
+The volume of the current slice of the lung (unit: cm^3):  1.7969112000000003
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.5576371999999998
+
+images/original/IM-0001-0408.jpg
+The current cross-sectional area of the lung (unit: pixel):  8309.0
+The current cross-sectional area of the lung (unit: cm^2):  6.979560000000001
+The volume of the current slice of the lung (unit: cm^3):  0.4187736
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.9357748
+
+images/original/IM-0001-0385.jpg
+The current cross-sectional area of the lung (unit: pixel):  12621.5
+The current cross-sectional area of the lung (unit: cm^2):  10.602060000000002
+The volume of the current slice of the lung (unit: cm^3):  0.6361236
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.7184248
+
+images/original/IM-0001-0391.jpg
+The current cross-sectional area of the lung (unit: pixel):  10869.0
+The current cross-sectional area of the lung (unit: cm^2):  9.12996
+The volume of the current slice of the lung (unit: cm^3):  0.5477976
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8067508
+
+images/original/IM-0001-0387.jpg
+The current cross-sectional area of the lung (unit: pixel):  12007.0
+The current cross-sectional area of the lung (unit: cm^2):  10.085880000000001
+The volume of the current slice of the lung (unit: cm^3):  0.6051528
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.7493956
+
+images/original/IM-0001-0393.jpg
+The current cross-sectional area of the lung (unit: pixel):  10893.5
+The current cross-sectional area of the lung (unit: cm^2):  9.150540000000001
+The volume of the current slice of the lung (unit: cm^3):  0.5490324000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.805516
+
+images/original/IM-0001-0378.jpg
+The current cross-sectional area of the lung (unit: pixel):  24532.0
+The current cross-sectional area of the lung (unit: cm^2):  20.60688
+The volume of the current slice of the lung (unit: cm^3):  1.2364127999999999
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.1181356000000005
+
+images/original/IM-0001-0344.jpg
+The current cross-sectional area of the lung (unit: pixel):  44703.0
+The current cross-sectional area of the lung (unit: cm^2):  37.550520000000006
+The volume of the current slice of the lung (unit: cm^3):  2.2530312
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.1015172
+
+images/original/IM-0001-0350.jpg
+The current cross-sectional area of the lung (unit: pixel):  38490.5
+The current cross-sectional area of the lung (unit: cm^2):  32.33202000000001
+The volume of the current slice of the lung (unit: cm^3):  1.9399212000000003
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.4146271999999998
+
+images/original/IM-0001-0351.jpg
+The current cross-sectional area of the lung (unit: pixel):  40545.5
+The current cross-sectional area of the lung (unit: cm^2):  34.058220000000006
+The volume of the current slice of the lung (unit: cm^3):  2.0434932000000003
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.3110551999999998
+
+images/original/IM-0001-0345.jpg
+The current cross-sectional area of the lung (unit: pixel):  43853.0
+The current cross-sectional area of the lung (unit: cm^2):  36.83652
+The volume of the current slice of the lung (unit: cm^3):  2.2101911999999997
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.1443572000000004
+
+images/original/IM-0001-0379.jpg
+The current cross-sectional area of the lung (unit: pixel):  16987.5
+The current cross-sectional area of the lung (unit: cm^2):  14.269500000000003
+The volume of the current slice of the lung (unit: cm^3):  0.85617
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.4983784
+
+images/original/IM-0001-0392.jpg
+The current cross-sectional area of the lung (unit: pixel):  11070.5
+The current cross-sectional area of the lung (unit: cm^2):  9.299220000000002
+The volume of the current slice of the lung (unit: cm^3):  0.5579532
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.7965952
+
+images/original/IM-0001-0386.jpg
+The current cross-sectional area of the lung (unit: pixel):  12440.0
+The current cross-sectional area of the lung (unit: cm^2):  10.449600000000002
+The volume of the current slice of the lung (unit: cm^3):  0.6269760000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.7275724
+
+images/original/IM-0001-0382.jpg
+The current cross-sectional area of the lung (unit: pixel):  14997.0
+The current cross-sectional area of the lung (unit: cm^2):  12.597480000000003
+The volume of the current slice of the lung (unit: cm^3):  0.7558488000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.5986995999999998
+
+images/original/IM-0001-0396.jpg
+The current cross-sectional area of the lung (unit: pixel):  10013.5
+The current cross-sectional area of the lung (unit: cm^2):  8.411340000000001
+The volume of the current slice of the lung (unit: cm^3):  0.5046804
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.849868
+
+images/original/IM-0001-0341.jpg
+The current cross-sectional area of the lung (unit: pixel):  45513.5
+The current cross-sectional area of the lung (unit: cm^2):  38.23134
+The volume of the current slice of the lung (unit: cm^3):  2.2938804
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.0606680000000002
+
+images/original/IM-0001-0355.jpg
+The current cross-sectional area of the lung (unit: pixel):  29194.0
+The current cross-sectional area of the lung (unit: cm^2):  24.522960000000005
+The volume of the current slice of the lung (unit: cm^3):  1.4713776
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.8831708
+
+images/original/IM-0001-0369.jpg
+The current cross-sectional area of the lung (unit: pixel):  20112.0
+The current cross-sectional area of the lung (unit: cm^2):  16.894080000000002
+The volume of the current slice of the lung (unit: cm^3):  1.0136448
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.3409036
+
+images/original/IM-0001-0368.jpg
+The current cross-sectional area of the lung (unit: pixel):  23421.5
+The current cross-sectional area of the lung (unit: cm^2):  19.67406
+The volume of the current slice of the lung (unit: cm^3):  1.1804436
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.1741048000000003
+
+images/original/IM-0001-0354.jpg
+The current cross-sectional area of the lung (unit: pixel):  24379.0
+The current cross-sectional area of the lung (unit: cm^2):  20.478360000000002
+The volume of the current slice of the lung (unit: cm^3):  1.2287016
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.1258468
+
+images/original/IM-0001-0340.jpg
+The current cross-sectional area of the lung (unit: pixel):  41710.0
+The current cross-sectional area of the lung (unit: cm^2):  35.03640000000001
+The volume of the current slice of the lung (unit: cm^3):  2.1021840000000003
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.2523643999999998
+
+images/original/IM-0001-0397.jpg
+The current cross-sectional area of the lung (unit: pixel):  9448.5
+The current cross-sectional area of the lung (unit: cm^2):  7.93674
+The volume of the current slice of the lung (unit: cm^3):  0.47620439999999997
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8783440000000002
+
+images/original/IM-0001-0383.jpg
+The current cross-sectional area of the lung (unit: pixel):  13611.0
+The current cross-sectional area of the lung (unit: cm^2):  11.433240000000003
+The volume of the current slice of the lung (unit: cm^3):  0.6859944000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.668554
+
+images/original/IM-0001-0395.jpg
+The current cross-sectional area of the lung (unit: pixel):  9017.5
+The current cross-sectional area of the lung (unit: cm^2):  7.574700000000001
+The volume of the current slice of the lung (unit: cm^3):  0.454482
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.9000664
+
+images/original/IM-0001-0381.jpg
+The current cross-sectional area of the lung (unit: pixel):  16535.0
+The current cross-sectional area of the lung (unit: cm^2):  13.889400000000002
+The volume of the current slice of the lung (unit: cm^3):  0.833364
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.5211844
+
+images/original/IM-0001-0356.jpg
+The current cross-sectional area of the lung (unit: pixel):  29508.0
+The current cross-sectional area of the lung (unit: cm^2):  24.786720000000003
+The volume of the current slice of the lung (unit: cm^3):  1.4872032
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.8673452000000001
+
+images/original/IM-0001-0342.jpg
+The current cross-sectional area of the lung (unit: pixel):  43340.5
+The current cross-sectional area of the lung (unit: cm^2):  36.406020000000005
+The volume of the current slice of the lung (unit: cm^3):  2.1843612
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.1701872
+
+images/original/IM-0001-0418.jpg
+The current cross-sectional area of the lung (unit: pixel):  10901.0
+The current cross-sectional area of the lung (unit: cm^2):  9.15684
+The volume of the current slice of the lung (unit: cm^3):  0.5494104
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8051380000000004
+
+images/original/IM-0001-0419.jpg
+The current cross-sectional area of the lung (unit: pixel):  19585.0
+The current cross-sectional area of the lung (unit: cm^2):  16.451400000000003
+The volume of the current slice of the lung (unit: cm^3):  0.9870840000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.3674644000000002
+
+images/original/IM-0001-0343.jpg
+The current cross-sectional area of the lung (unit: pixel):  47097.0
+The current cross-sectional area of the lung (unit: cm^2):  39.56148
+The volume of the current slice of the lung (unit: cm^3):  2.3736888
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.9808596
+
+images/original/IM-0001-0357.jpg
+The current cross-sectional area of the lung (unit: pixel):  30662.0
+The current cross-sectional area of the lung (unit: cm^2):  25.756080000000004
+The volume of the current slice of the lung (unit: cm^3):  1.5453648
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.8091836000000001
+
+images/original/IM-0001-0380.jpg
+The current cross-sectional area of the lung (unit: pixel):  16017.0
+The current cross-sectional area of the lung (unit: cm^2):  13.45428
+The volume of the current slice of the lung (unit: cm^3):  0.8072568
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.5472916000000003
+
+images/original/IM-0001-0394.jpg
+The current cross-sectional area of the lung (unit: pixel):  10339.5
+The current cross-sectional area of the lung (unit: cm^2):  8.68518
+The volume of the current slice of the lung (unit: cm^3):  0.5211108
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8334376
+
+images/original/IM-0001-0399.jpg
+The current cross-sectional area of the lung (unit: pixel):  9733.5
+The current cross-sectional area of the lung (unit: cm^2):  8.176140000000002
+The volume of the current slice of the lung (unit: cm^3):  0.4905684
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.86398
+
+images/original/IM-0001-0414.jpg
+The current cross-sectional area of the lung (unit: pixel):  14052.5
+The current cross-sectional area of the lung (unit: cm^2):  11.804100000000002
+The volume of the current slice of the lung (unit: cm^3):  0.708246
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.6463024
+
+images/original/IM-0001-0372.jpg
+The current cross-sectional area of the lung (unit: pixel):  19893.5
+The current cross-sectional area of the lung (unit: cm^2):  16.71054
+The volume of the current slice of the lung (unit: cm^3):  1.0026324
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.351916
+
+images/original/IM-0001-0366.jpg
+The current cross-sectional area of the lung (unit: pixel):  23118.0
+The current cross-sectional area of the lung (unit: cm^2):  19.419120000000003
+The volume of the current slice of the lung (unit: cm^3):  1.1651472
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.1894012
+
+images/original/IM-0001-0400.jpg
+The current cross-sectional area of the lung (unit: pixel):  10108.5
+The current cross-sectional area of the lung (unit: cm^2):  8.491140000000001
+The volume of the current slice of the lung (unit: cm^3):  0.5094684
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8450800000000003
+
+images/original/IM-0001-0367.jpg
+The current cross-sectional area of the lung (unit: pixel):  24279.5
+The current cross-sectional area of the lung (unit: cm^2):  20.394780000000004
+The volume of the current slice of the lung (unit: cm^3):  1.2236868
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.1308616000000002
+
+images/original/IM-0001-0401.jpg
+The current cross-sectional area of the lung (unit: pixel):  9059.5
+The current cross-sectional area of the lung (unit: cm^2):  7.609980000000001
+The volume of the current slice of the lung (unit: cm^3):  0.45659879999999997
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8979496
+
+images/original/IM-0001-0415.jpg
+The current cross-sectional area of the lung (unit: pixel):  17456.5
+The current cross-sectional area of the lung (unit: cm^2):  14.66346
+The volume of the current slice of the lung (unit: cm^3):  0.8798076
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.4747408
+
+images/original/IM-0001-0373.jpg
+The current cross-sectional area of the lung (unit: pixel):  21749.5
+The current cross-sectional area of the lung (unit: cm^2):  18.26958
+The volume of the current slice of the lung (unit: cm^3):  1.0961748
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.2583736
+
+images/original/IM-0001-0398.jpg
+The current cross-sectional area of the lung (unit: pixel):  9916.0
+The current cross-sectional area of the lung (unit: cm^2):  8.32944
+The volume of the current slice of the lung (unit: cm^3):  0.4997664
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.854782
+
+images/original/IM-0001-0359.jpg
+The current cross-sectional area of the lung (unit: pixel):  25390.0
+The current cross-sectional area of the lung (unit: cm^2):  21.327600000000004
+The volume of the current slice of the lung (unit: cm^3):  1.2796560000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.0748924
+
+images/original/IM-0001-0403.jpg
+The current cross-sectional area of the lung (unit: pixel):  10240.5
+The current cross-sectional area of the lung (unit: cm^2):  8.602020000000001
+The volume of the current slice of the lung (unit: cm^3):  0.5161212000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8384272
+
+images/original/IM-0001-0365.jpg
+The current cross-sectional area of the lung (unit: pixel):  23656.5
+The current cross-sectional area of the lung (unit: cm^2):  19.871460000000003
+The volume of the current slice of the lung (unit: cm^3):  1.1922876
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.1622608000000003
+
+images/original/IM-0001-0371.jpg
+The current cross-sectional area of the lung (unit: pixel):  21582.5
+The current cross-sectional area of the lung (unit: cm^2):  18.1293
+The volume of the current slice of the lung (unit: cm^3):  1.087758
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.2667904
+
+images/original/IM-0001-0417.jpg
+The current cross-sectional area of the lung (unit: pixel):  10926.5
+The current cross-sectional area of the lung (unit: cm^2):  9.178260000000002
+The volume of the current slice of the lung (unit: cm^3):  0.5506956000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8038528
+
+images/original/IM-0001-0370.jpg
+The current cross-sectional area of the lung (unit: pixel):  21331.0
+The current cross-sectional area of the lung (unit: cm^2):  17.91804
+The volume of the current slice of the lung (unit: cm^3):  1.0750823999999999
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.279466
+
+images/original/IM-0001-0416.jpg
+The current cross-sectional area of the lung (unit: pixel):  10345.0
+The current cross-sectional area of the lung (unit: cm^2):  8.689800000000002
+The volume of the current slice of the lung (unit: cm^3):  0.5213880000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8331604
+
+images/original/IM-0001-0402.jpg
+The current cross-sectional area of the lung (unit: pixel):  9548.0
+The current cross-sectional area of the lung (unit: cm^2):  8.020320000000002
+The volume of the current slice of the lung (unit: cm^3):  0.48121920000000007
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8733292
+
+images/original/IM-0001-0364.jpg
+The current cross-sectional area of the lung (unit: pixel):  24769.0
+The current cross-sectional area of the lung (unit: cm^2):  20.805960000000002
+The volume of the current slice of the lung (unit: cm^3):  1.2483576
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.1061908000000003
+
+images/original/IM-0001-0358.jpg
+The current cross-sectional area of the lung (unit: pixel):  31228.5
+The current cross-sectional area of the lung (unit: cm^2):  26.23194
+The volume of the current slice of the lung (unit: cm^3):  1.5739163999999999
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.7806320000000002
+
+images/original/IM-0001-0360.jpg
+The current cross-sectional area of the lung (unit: pixel):  28030.5
+The current cross-sectional area of the lung (unit: cm^2):  23.545620000000003
+The volume of the current slice of the lung (unit: cm^3):  1.4127372
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.9418112
+
+images/original/IM-0001-0406.jpg
+The current cross-sectional area of the lung (unit: pixel):  10732.0
+The current cross-sectional area of the lung (unit: cm^2):  9.014880000000002
+The volume of the current slice of the lung (unit: cm^3):  0.5408928000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8136556
+
+images/original/IM-0001-0412.jpg
+The current cross-sectional area of the lung (unit: pixel):  6749.0
+The current cross-sectional area of the lung (unit: cm^2):  5.669160000000001
+The volume of the current slice of the lung (unit: cm^3):  0.3401496
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  3.0143988
+
+images/original/IM-0001-0374.jpg
+The current cross-sectional area of the lung (unit: pixel):  22917.5
+The current cross-sectional area of the lung (unit: cm^2):  19.250700000000002
+The volume of the current slice of the lung (unit: cm^3):  1.1550420000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.1995063999999998
+
+images/original/IM-0001-0348.jpg
+The current cross-sectional area of the lung (unit: pixel):  39252.5
+The current cross-sectional area of the lung (unit: cm^2):  32.972100000000005
+The volume of the current slice of the lung (unit: cm^3):  1.978326
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.3762224
+
+images/original/IM-0001-0349.jpg
+The current cross-sectional area of the lung (unit: pixel):  33927.0
+The current cross-sectional area of the lung (unit: cm^2):  28.49868
+The volume of the current slice of the lung (unit: cm^3):  1.7099207999999997
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.6446276000000004
+
+images/original/IM-0001-0413.jpg
+The current cross-sectional area of the lung (unit: pixel):  8961.0
+The current cross-sectional area of the lung (unit: cm^2):  7.527240000000001
+The volume of the current slice of the lung (unit: cm^3):  0.45163440000000005
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.902914
+
+images/original/IM-0001-0375.jpg
+The current cross-sectional area of the lung (unit: pixel):  18769.5
+The current cross-sectional area of the lung (unit: cm^2):  15.766380000000002
+The volume of the current slice of the lung (unit: cm^3):  0.9459828
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.4085656
+
+images/original/IM-0001-0361.jpg
+The current cross-sectional area of the lung (unit: pixel):  26133.0
+The current cross-sectional area of the lung (unit: cm^2):  21.951720000000005
+The volume of the current slice of the lung (unit: cm^3):  1.3171032000000003
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.0374451999999996
+
+images/original/IM-0001-0407.jpg
+The current cross-sectional area of the lung (unit: pixel):  9276.5
+The current cross-sectional area of the lung (unit: cm^2):  7.792260000000001
+The volume of the current slice of the lung (unit: cm^3):  0.46753560000000005
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8870128
+
+images/original/IM-0001-0388.jpg
+The current cross-sectional area of the lung (unit: pixel):  11735.0
+The current cross-sectional area of the lung (unit: cm^2):  9.857400000000002
+The volume of the current slice of the lung (unit: cm^3):  0.5914440000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.7631044
+
+images/original/IM-0001-0377.jpg
+The current cross-sectional area of the lung (unit: pixel):  39430.5
+The current cross-sectional area of the lung (unit: cm^2):  33.12162000000001
+The volume of the current slice of the lung (unit: cm^3):  1.9872972000000002
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.3672511999999999
+
+images/original/IM-0001-0411.jpg
+The current cross-sectional area of the lung (unit: pixel):  5695.0
+The current cross-sectional area of the lung (unit: cm^2):  4.7838
+The volume of the current slice of the lung (unit: cm^3):  0.287028
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  3.0675204000000003
+
+images/original/IM-0001-0405.jpg
+The current cross-sectional area of the lung (unit: pixel):  11321.0
+The current cross-sectional area of the lung (unit: cm^2):  9.509640000000001
+The volume of the current slice of the lung (unit: cm^3):  0.5705784
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.78397
+
+images/original/IM-0001-0363.jpg
+The current cross-sectional area of the lung (unit: pixel):  25885.5
+The current cross-sectional area of the lung (unit: cm^2):  21.743820000000003
+The volume of the current slice of the lung (unit: cm^3):  1.3046292000000002
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.0499191999999997
+
+images/original/IM-0001-0404.jpg
+The current cross-sectional area of the lung (unit: pixel):  10118.5
+The current cross-sectional area of the lung (unit: cm^2):  8.499540000000001
+The volume of the current slice of the lung (unit: cm^3):  0.5099724000000001
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.844576
+
+images/original/IM-0001-0362.jpg
+The current cross-sectional area of the lung (unit: pixel):  26308.0
+The current cross-sectional area of the lung (unit: cm^2):  22.098720000000004
+The volume of the current slice of the lung (unit: cm^3):  1.3259232
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.0286252
+
+images/original/IM-0001-0376.jpg
+The current cross-sectional area of the lung (unit: pixel):  30525.0
+The current cross-sectional area of the lung (unit: cm^2):  25.641000000000002
+The volume of the current slice of the lung (unit: cm^3):  1.53846
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.8160884000000002
+
+images/original/IM-0001-0410.jpg
+The current cross-sectional area of the lung (unit: pixel):  7788.5
+The current cross-sectional area of the lung (unit: cm^2):  6.54234
+The volume of the current slice of the lung (unit: cm^3):  0.39254039999999996
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.962008
+
+images/original/IM-0001-0389.jpg
+The current cross-sectional area of the lung (unit: pixel):  10778.0
+The current cross-sectional area of the lung (unit: cm^2):  9.05352
+The volume of the current slice of the lung (unit: cm^3):  0.5432112
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  2.8113372
+
+images/original/IM-0001-0339.jpg
+The current cross-sectional area of the lung (unit: pixel):  46036.5
+The current cross-sectional area of the lung (unit: cm^2):  38.670660000000005
+The volume of the current slice of the lung (unit: cm^3):  2.3202396
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.0343088000000003
+
+images/original/IM-0001-0311.jpg
+The current cross-sectional area of the lung (unit: pixel):  71935.0
+The current cross-sectional area of the lung (unit: cm^2):  60.42540000000001
+The volume of the current slice of the lung (unit: cm^3):  3.625524
+[ERROR] IM-0001-0311.jpg | Volume: 3.625524  > complete lung volume: 3.3545484
+images/original/IM-0001-0305.jpg
+The current cross-sectional area of the lung (unit: pixel):  66558.5
+The current cross-sectional area of the lung (unit: cm^2):  55.90914000000001
+The volume of the current slice of the lung (unit: cm^3):  3.3545484
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.0
+
+images/original/IM-0001-0310.jpg
+The current cross-sectional area of the lung (unit: pixel):  69811.0
+The current cross-sectional area of the lung (unit: cm^2):  58.64124000000001
+The volume of the current slice of the lung (unit: cm^3):  3.5184744000000006
+[ERROR] IM-0001-0310.jpg | Volume: 3.5184744000000006  > complete lung volume: 3.3545484
+images/original/IM-0001-0338.jpg
+The current cross-sectional area of the lung (unit: pixel):  44244.5
+The current cross-sectional area of the lung (unit: cm^2):  37.165380000000006
+The volume of the current slice of the lung (unit: cm^3):  2.2299228
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  1.1246256
+
+images/original/IM-0001-0306.jpg
+The current cross-sectional area of the lung (unit: pixel):  70665.5
+The current cross-sectional area of the lung (unit: cm^2):  59.35902000000001
+The volume of the current slice of the lung (unit: cm^3):  3.5615411999999997
+[ERROR] IM-0001-0306.jpg | Volume: 3.5615411999999997  > complete lung volume: 3.3545484
+images/original/IM-0001-0312.jpg
+The current cross-sectional area of the lung (unit: pixel):  68739.0
+The current cross-sectional area of the lung (unit: cm^2):  57.74076
+The volume of the current slice of the lung (unit: cm^3):  3.4644456
+[ERROR] IM-0001-0312.jpg | Volume: 3.4644456  > complete lung volume: 3.3545484
+images/original/IM-0001-0313.jpg
+The current cross-sectional area of the lung (unit: pixel):  66943.0
+The current cross-sectional area of the lung (unit: cm^2):  56.23212000000001
+The volume of the current slice of the lung (unit: cm^3):  3.3739272000000002
+[ERROR] IM-0001-0313.jpg | Volume: 3.3739272000000002  > complete lung volume: 3.3545484
+images/original/IM-0001-0307.jpg
+The current cross-sectional area of the lung (unit: pixel):  68800.0
+The current cross-sectional area of the lung (unit: cm^2):  57.79200000000001
+The volume of the current slice of the lung (unit: cm^3):  3.4675200000000004
+[ERROR] IM-0001-0307.jpg | Volume: 3.4675200000000004  > complete lung volume: 3.3545484
+images/original/IM-0001-0317.jpg
+The current cross-sectional area of the lung (unit: pixel):  59744.0
+The current cross-sectional area of the lung (unit: cm^2):  50.18496000000001
+The volume of the current slice of the lung (unit: cm^3):  3.0110976000000003
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.34345079999999983
+
+images/original/IM-0001-0316.jpg
+The current cross-sectional area of the lung (unit: pixel):  59904.5
+The current cross-sectional area of the lung (unit: cm^2):  50.31978
+The volume of the current slice of the lung (unit: cm^3):  3.0191867999999995
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.3353616000000006
+
+images/original/IM-0001-0314.jpg
+The current cross-sectional area of the lung (unit: pixel):  64027.5
+The current cross-sectional area of the lung (unit: cm^2):  53.783100000000005
+The volume of the current slice of the lung (unit: cm^3):  3.2269859999999997
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.1275624000000004
+
+images/original/IM-0001-0328.jpg
+The current cross-sectional area of the lung (unit: pixel):  53999.5
+The current cross-sectional area of the lung (unit: cm^2):  45.35958000000001
+The volume of the current slice of the lung (unit: cm^3):  2.7215748
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.6329736000000001
+
+images/original/IM-0001-0329.jpg
+The current cross-sectional area of the lung (unit: pixel):  52760.5
+The current cross-sectional area of the lung (unit: cm^2):  44.31882000000001
+The volume of the current slice of the lung (unit: cm^3):  2.6591292
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.6954191999999999
+
+images/original/IM-0001-0315.jpg
+The current cross-sectional area of the lung (unit: pixel):  60152.5
+The current cross-sectional area of the lung (unit: cm^2):  50.5281
+The volume of the current slice of the lung (unit: cm^3):  3.0316859999999997
+The complete lung volume (unit: cm^3):  3.3545484
+The volume of the current slice of the diaphragm (unit: cm^3):  0.32286240000000044
+
+Total diaphragm volume (unit: cm^3): 202.95669240000004

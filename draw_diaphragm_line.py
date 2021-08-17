@@ -4,7 +4,7 @@ import cv2
 from colorama import Fore
 from colorama import init
 
-from utils.geometry_utils import get_distance_between_two_points, get_middle_point_index
+from utils.geometry_utils import get_distance_between_two_points, get_middle_point_index, get_slope_between_two_points
 
 init(autoreset=True)
 
@@ -59,7 +59,7 @@ cv2.drawContours(original, contours, small_lung['index'], 255, 2)
 #  [[181  60]]
 #  [[200  57]]]
 
-def draw_diaphragm_curve(one_side_lung_contour):
+def draw_diaphragm_curve(one_side_lung_contour, is_big_lung):
     contour_points = []
     for point in one_side_lung_contour:
         point = point[0]
@@ -79,21 +79,55 @@ def draw_diaphragm_curve(one_side_lung_contour):
 
     diaphragm_points = []
 
-    def draw_half_diaphragm_curve(start_index, stop_index, step, last_point_x_coordinate, last_point_y_coordinate):
+    def draw_half_diaphragm_curve(start_index, stop_index, step,
+                                  last_point_x_coordinate, last_point_y_coordinate,
+                                  check_slope):
+        # skip_count = 0
+        # distance_threshold = 35
+        upper_lower_bound_threshold = 10
         for index in range(start_index, stop_index, step):
             current_x_coordinate = contour_points[index][0]
             current_y_coordinate = contour_points[index][1]
+            print('')
+            print(Fore.LIGHTGREEN_EX + 'Index: ', index)
+
+            if last_point_y_coordinate - upper_lower_bound_threshold > current_y_coordinate or \
+                    current_y_coordinate > last_point_y_coordinate + upper_lower_bound_threshold:
+                print(Fore.YELLOW + 'Skip points that exceed the upper and lower bounds')
+                continue
+
+            # if current_y_coordinate < image_height / 2:
+            #     print(Fore.YELLOW + 'Skip the upper half of the lungs')
+            #     continue
+
             print(Fore.BLUE + 'Current point: ', current_x_coordinate, current_y_coordinate)
             distance = get_distance_between_two_points(x1=current_x_coordinate, y1=current_y_coordinate,
                                                        x2=last_point_x_coordinate, y2=last_point_y_coordinate)
             print(Fore.BLUE + 'Last point: ', last_point_x_coordinate, last_point_y_coordinate)
             print(Fore.GREEN + 'Distance: ', distance)
-            print('')
-            if distance > 20:
-                last_point_x_coordinate += step
-                print(Fore.RED + 'SKIPPED\n')
-                continue
+            # if distance > distance_threshold:
+            #     # skip_count += 1
+            #     # if skip_count is 3:
+            #     #     last_point_x_coordinate -= step * 3
+            #     #     skip_count = 0
+            #     last_point_x_coordinate += step
+            #     print(Fore.RED + f'Skip points that are more than {distance_threshold} from the current point')
+            #     continue
 
+            if check_slope:
+                monotonicity = step > 0 and 'increasing' or 'decreasing'
+                if (monotonicity is 'increasing' and
+                    (stop_index - int((stop_index - start_index) / 3) <= index <= stop_index)) or \
+                        (monotonicity is 'decreasing' and
+                         stop_index <= index <= (start_index - stop_index) / 3):
+
+                    slope = get_slope_between_two_points(last_point_x_coordinate, last_point_y_coordinate,
+                                                         current_x_coordinate, current_y_coordinate)
+                    print(Fore.RED + f'Slope: {slope}')
+                    if abs(slope) > 0.5:
+                        break
+
+            # skip_count = 0
             diaphragm_points.append([current_x_coordinate, current_y_coordinate])
             last_point_x_coordinate = current_x_coordinate
             last_point_y_coordinate = current_y_coordinate
@@ -102,25 +136,32 @@ def draw_diaphragm_curve(one_side_lung_contour):
                               stop_index=-1,
                               step=-1,
                               last_point_x_coordinate=middle_point[0],
-                              last_point_y_coordinate=middle_point[1])
+                              last_point_y_coordinate=middle_point[1],
+                              check_slope=False if is_big_lung is False else True)
 
     draw_half_diaphragm_curve(start_index=middle_point_index,
                               stop_index=len(contour_points),
                               step=1,
                               last_point_x_coordinate=middle_point[0],
-                              last_point_y_coordinate=middle_point[1])
-    print('Middle point index: ', middle_point_index)
+                              last_point_y_coordinate=middle_point[1],
+                              check_slope=True if is_big_lung is False else False)
+
+    print('\n\nMiddle point index: ', middle_point_index)
 
     print('Length of diaphragm points: ', len(diaphragm_points))
 
     diaphragm_points = sorted(diaphragm_points, key=lambda k: [k[0], k[1]])
     diaphragm_points = np.array(diaphragm_points)
     cv2.polylines(original, [diaphragm_points], isClosed=False, color=(0, 255, 0), thickness=2)
+    for diaphragm_point in diaphragm_points:
+        [x, y] = diaphragm_point
+        cv2.circle(original, (x, y), radius=0, color=(255, 0, 208), thickness=2)
 
 
-draw_diaphragm_curve(small_lung['contour'])
-draw_diaphragm_curve(big_lung['contour'])
+draw_diaphragm_curve(one_side_lung_contour=small_lung['contour'], is_big_lung=False)
+draw_diaphragm_curve(one_side_lung_contour=big_lung['contour'], is_big_lung=True)
 
+cv2.imwrite('images/output.jpg', original)
 # cv2.imshow('mask', mask)
 # cv2.imshow('opening', opening)
 cv2.imshow('original', original)

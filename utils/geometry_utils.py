@@ -1,6 +1,12 @@
 import math
 
 
+def get_slope_between_two_points(x1, y1, x2, y2):
+    if y2 - y1 == 0 or x2 - x1 == 0:
+        return 0
+    return (y2 - y1) / (x2 - x1)
+
+
 def get_distance_between_two_points(x1, y1, x2, y2):
     return math.hypot(x2 - x1, y2 - y1)
 

@@ -4,6 +4,9 @@
 # macOS
 .DS_STORE
 
+# Images
+images/processed
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

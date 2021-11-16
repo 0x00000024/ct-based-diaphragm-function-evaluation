@@ -1,5 +1,4 @@
 from pathlib import Path
-
 import numpy as np
 from datetime import datetime
 
@@ -8,7 +7,7 @@ from datetime import datetime
 #############
 # debugging_mode = True
 debugging_mode = False
-debug_image_filename = 'IM-0001-0180.jpg'
+debug_image_filename = 'IM-0001-0068.jpg'
 # debug_lung_position = 'left'
 debug_lung_position = 'right'
 
@@ -16,9 +15,10 @@ debug_lung_position = 'right'
 # Image
 #############
 images_dirname = '/Users/ethan/test/CBDFE/ct-based-diaphragm-function-evaluation/images/'
-patient_id = '10157947'
-category = 'in'
+patient_id = '10017162'
+# category = 'in'
 # category = 'ex'
+category = 'mix'
 date = datetime.today().strftime('%Y%m%d-%H%M%S')[2:]
 original_images_dirname = images_dirname + 'original/' + patient_id + '/' + category + '/'
 processed_images_dirname = images_dirname + 'processed/' + patient_id + '/' + category + '/' + date + '/'
@@ -49,14 +49,19 @@ html_filename = '3d.html'
 csv_filename = 'points.csv'
 gif_url = url_origin + url_path + gif_filename
 html_url = url_origin + url_path + html_filename
+csv_url = url_origin + url_path + csv_filename
 upload_cmd = 'cd ' + images_dirname + 'processed && ls -al && find ' + patient_id + '/' + category + '/' + date + '/' +\
-             ' -name "*.gif" -o -name "*.html" | xargs tar cfP - |' +\
-             ' ssh root@ct.eny.li tar xfP - -C /var/www/html && echo'
+             ' -name "*.gif" -o -name "*.html" -o -name "*.csv" | xargs tar cfP - |' +\
+             ' ssh root@ct.eny.li tar xfP - -C /var/www/html && rm -rf * && echo'
 
 #############
 # Diaphragm
 #############
 diaphragm_points = None
+# unit: cm
+row_spacing = 0.3 * 10**-1
+col_spacing = 0.28 * 10**-1
+thickness = 1 * 10**-1
 
 #############
 # Color
@@ -78,3 +83,10 @@ color_magenta = (255, 0, 255)
 color_violet = (255, 0, 127)
 
 color_purple = (173, 13, 106)
+
+#############
+# 3d vis
+#############
+camera = dict(up=dict(x=0, y=1, z=0),
+              center=dict(x=0, y=0, z=0),
+              eye=dict(x=0, y=1.25, z=-1.5))

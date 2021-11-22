@@ -1,13 +1,11 @@
 import os
 from os import listdir
 from os.path import isfile, join
-from pathlib import Path
 import cv2
 import pandas as pd
 from slice import handle_lung_slice
 from colorama import Fore, init
 import settings
-from src.utils.debugger import my_debugger, var_info
 from src.utils.image_utils import jpg2gif
 from timeit import default_timer as timer
 import plotly.express as px
@@ -46,10 +44,8 @@ fig = px.scatter_3d(df,
                     y='y_value',
                     z='slice_interval',
                     color='image_number')
-camera = dict(up=dict(x=0, y=1, z=0),
-              center=dict(x=0, y=0, z=0),
-              eye=dict(x=0, y=1.25, z=-1.5))
-fig.update_layout(scene_camera=camera, title=settings.patient_id + '/' + settings.category)
+fig.update_layout(scene_camera=settings.camera,
+                  title=settings.patient_id + '/' + settings.category)
 fig.data[0].marker.symbol = 'circle'
 fig.data[0].marker.size = 2
 fig.write_html(settings.processed_images_dirname + settings.html_filename)
@@ -73,6 +69,6 @@ if not settings.debugging_mode:
     os.system(settings.upload_cmd)
     print(Fore.BLUE + '2d demo:', settings.gif_url + '\n')
     print(Fore.BLUE + '3d demo:', settings.html_url + '\n')
-    # os.system(f'open {settings.processed_images_dirname}{settings.gif_filename}')
+    print(Fore.BLUE + 'points.csv:', settings.csv_url + '\n')
 
     print(Fore.GREEN + 'DONE!')

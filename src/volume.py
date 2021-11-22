@@ -41,8 +41,7 @@ while start_image_num <= end_image_num:
                 dist_list.append(dist)
                 curr_pixel_num += dist
         else:
-            print(Fore.RED + '[Linear interpolation error] Uncovered frame:',
-                  x)
+            print(Fore.YELLOW + '[Info] Omitted frame:', x)
 
     print(
         Fore.GREEN +

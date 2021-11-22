@@ -13,18 +13,7 @@ print(df_in.head())
 df_ex = pd.read_csv(ex_csv_url)
 print(df_ex.head())
 
-# Add two extreme points to fix the range of x and y axis
-d = {
-    'Unnamed: 0': [12, 12],
-    'x_value': [0, 0],
-    'y_value': [0, 512],
-    'slice_interval': [2, 2],
-    'image_number': [70, 70]
-}
-df = pd.DataFrame(data=d)
-print(df.head())
-
-frames = [df_in, df_ex, df]
+frames = [df_in, df_ex]
 
 df_merge = pd.concat(frames)
 print(df_merge.head())
@@ -32,6 +21,8 @@ fig = px.scatter_3d(df_merge,
                     x='x_value',
                     y='y_value',
                     z='slice_interval',
+                    range_x=[0, 512],
+                    range_y=[0, 512],
                     color='image_number')
 
 fig.update_layout(scene_camera=settings.camera,

@@ -7,22 +7,21 @@ from datetime import datetime
 #############
 # debugging_mode = True
 debugging_mode = False
-debug_image_filename = 'IM-0001-0068.jpg'
-# debug_lung_position = 'left'
-debug_lung_position = 'right'
+debug_image_filename = 'IM-0001-0078.jpg'
+debug_lung_position = 'left'
+# debug_lung_position = 'right'
 
 #############
 # Image
 #############
 images_dirname = '/Users/ethan/test/CBDFE/ct-based-diaphragm-function-evaluation/images/'
-patient_id = '10017162'
+# patient_id = '10602422'
 # category = 'in'
 # category = 'ex'
-category = 'mix'
+# category = 'mix'
 date = datetime.today().strftime('%Y%m%d-%H%M%S')[2:]
-original_images_dirname = images_dirname + 'original/' + patient_id + '/' + category + '/'
-processed_images_dirname = images_dirname + 'processed/' + patient_id + '/' + category + '/' + date + '/'
-Path(processed_images_dirname).mkdir(parents=True, exist_ok=True)
+original_images_dirname = None
+processed_images_dirname = None
 
 image_height = None
 image_width = None
@@ -43,16 +42,11 @@ right_lung_upper_boundary = np.array([103, 111, 195],
 # Web
 #############
 url_origin = 'https://ct.eny.li'
-url_path = '/' + patient_id + '/' + category + '/' + date + '/'
 gif_filename = '2d.gif'
 html_filename = '3d.html'
 csv_filename = 'points.csv'
-gif_url = url_origin + url_path + gif_filename
-html_url = url_origin + url_path + html_filename
-csv_url = url_origin + url_path + csv_filename
-upload_cmd = 'cd ' + images_dirname + 'processed && ls -al && find ' + patient_id + '/' + category + '/' + date + '/' +\
-             ' -name "*.gif" -o -name "*.html" -o -name "*.csv" | xargs tar cfP - |' +\
-             ' ssh root@ct.eny.li tar xfP - -C /var/www/html && rm -rf * && echo'
+html_url = None
+upload_cmd = None
 
 #############
 # Diaphragm

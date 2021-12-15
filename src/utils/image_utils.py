@@ -1,5 +1,4 @@
 from pathlib import Path
-
 import cv2
 from typing import Tuple
 import imageio

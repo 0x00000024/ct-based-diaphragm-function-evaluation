@@ -1,0 +1,2 @@
+﻿id,type,patient_id,patient_name,start_image_number,stop_image_number,total_images,in_2d,in_3d,in_csv,ex_2d,ex_3d,ex_csv,merged_3d,volume (cm^3),longest dist (cm),shortest dist (cm)
+1,,10532242,,44,65,,,,,,,,,,,

@@ -5,11 +5,11 @@ from datetime import datetime
 #############
 # Debugging
 #############
-# debugging_mode = True
-debugging_mode = False
-debug_image_filename = 'IM-0001-0078.jpg'
-debug_lung_position = 'left'
-# debug_lung_position = 'right'
+debugging_mode = True
+# debugging_mode = False
+debug_image_filename = 'IM-0001-0065.jpg'
+# debug_lung_position = 'left'
+debug_lung_position = 'right'
 
 #############
 # Image
@@ -17,7 +17,7 @@ debug_lung_position = 'left'
 images_dirname = '/Users/ethan/test/CBDFE/ct-based-diaphragm-function-evaluation/images/'
 # patient_id = '10602422'
 # category = 'in'
-# category = 'ex'
+category = 'ex'
 # category = 'mix'
 date = datetime.today().strftime('%Y%m%d-%H%M%S')[2:]
 original_images_dirname = None

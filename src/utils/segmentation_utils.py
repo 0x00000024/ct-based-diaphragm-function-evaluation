@@ -6,7 +6,7 @@ from nptyping import NDArray
 from numpy import int32
 import settings
 from src.utils.debugger import my_debugger, var_info
-from src.utils.geometry_utils import get_slope_between_two_points, get_middle_point_index
+from src.utils.geometry_utils import get_slope_between_two_points, get_middle_point_index, linear_interpolation
 
 
 def handle_contour_points_data_structure(
@@ -127,26 +127,71 @@ def get_monotonic_change_points_index(position: str,
                                                               np.int32],
                                       start_index: int,
                                       stop_index: int) -> List[int]:
-    monotonic_change_points_index = []
+    start_point = contour_points[start_index]
+    stop_point = contour_points[stop_index]
+    print('start index', start_index)
+    print('stop index', stop_index)
+    print('start point', start_point)
+    print('stop point', stop_point)
+
+    # Linear interpolation
     step = 1 if position is 'left' else -1
+    result = []
+    first_index = start_index
+    second_point = None
+    for second_index in range(start_index + 1, stop_index, step):
+        first_point = contour_points[first_index]
+        second_point = contour_points[second_index]
+        if first_point[0] == second_point[0]:
+            result.append(first_point)
+            first_index = second_index
+            continue
+        interpolated_array = linear_interpolation(
+            points=np.vstack((first_point, second_point)).reshape(2, 2))
+        result.append(first_point)
+        for points in interpolated_array:
+            result.append(points)
+        first_index = second_index
+
+    result.append(second_point)
+    contour_points = np.asarray(result)
+
+    for i in range(len(contour_points)):
+        if contour_points[i][0] == stop_point[0]:
+            stop_index = i
+    print('changed stop index', stop_index)
+    print('changed stop point', contour_points[stop_index])
+
+    monotonic_change_points_index = []
+    step = 2 if position is 'left' else -2
     slope_list = []
     first_point = [
         contour_points[start_index][0], contour_points[start_index][1]
     ]
-    for i in range(start_index + step, stop_index, step):
+    count = 0
+    for i in range(start_index, stop_index, step):
+        count += 1
         second_point = [contour_points[i][0], contour_points[i][1]]
         slope = get_slope_between_two_points(first_point[0], first_point[1],
                                              second_point[0], second_point[1])
-        if slope == -1:
-            continue
+        # if slope == -1:
+        #     continue
 
         if len(slope_list) > 0:
-            if (slope_list[len(slope_list) - 1] > 0) != (slope > 0):
-                monotonic_change_points_index.append(i - step)
+            # if (slope_list[len(slope_list) - 1] > 0) != (slope > 0):
+            if len(slope_list) > 4:
+                if (slope_list[-4] > 0) != (slope_list[-3] > 0):
+                    if (slope_list[-3] > 0 and slope_list[-2] > 0 and
+                            slope_list[-1] > 0) or (slope_list[-3] < 0 and
+                                                    slope_list[-2] < 0 and
+                                                    slope_list[-1] < 0):
+                        monotonic_change_points_index.append(i - step)
 
         slope_list.append(slope)
 
         first_point = [contour_points[i][0], contour_points[i][1]]
+    my_debugger(var_info(count))
+    my_debugger(var_info(slope_list))
 
     return monotonic_change_points_index
 

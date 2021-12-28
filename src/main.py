@@ -99,14 +99,14 @@ for index, row in df.iterrows():
     for i in range(start_image_number, stop_image_number + 1, 1):
         images_basename.append(f"IM-0001-{i:04d}.jpg")
 
-    settings.initial_slice_interval = 2
-    settings.diaphragm_points = None
-    gif_url, html_url, csv_url = in_or_ex_analysis(
-        patient_id=patient_id, category='in', images_basename=images_basename)
-    df.at[index, 'in_2d'] = gif_url
-    df.at[index, 'in_3d'] = html_url
-    df.at[index, 'in_csv'] = csv_url
-    in_csv = csv_url
+    # settings.initial_slice_interval = 2
+    # settings.diaphragm_points = None
+    # gif_url, html_url, csv_url = in_or_ex_analysis(
+    #     patient_id=patient_id, category='in', images_basename=images_basename)
+    # df.at[index, 'in_2d'] = gif_url
+    # df.at[index, 'in_3d'] = html_url
+    # df.at[index, 'in_csv'] = csv_url
+    # in_csv = csv_url
 
     settings.initial_slice_interval = 2
     settings.diaphragm_points = None

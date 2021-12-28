@@ -14,7 +14,7 @@ debug_lung_position = 'left'
 #############
 # Image
 #############
-images_dirname = '/Users/ethan/test/CBDFE/ct-based-diaphragm-function-evaluation/images/'
+images_dirname = '/root/ct/images/'
 # patient_id = '10602422'
 # category = 'in'
 # category = 'ex'

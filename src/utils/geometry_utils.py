@@ -2,10 +2,10 @@ import math
 from typing import List, Tuple
 import numpy as np
 import typing
+import pandas as pd
 from nptyping import NDArray
 from numpy import vstack, ones
 from numpy.linalg import lstsq
-
 from src.utils.debugger import my_debugger, var_info
 
 
@@ -28,8 +28,8 @@ def get_middle_point_index(position: str,
     middle_point_x_value = int(
         (contour_points[start_index][0] + contour_points[stop_index][0]) / 2)
     for i in range(start_index, stop_index - 1, step):
-        if contour_points[i][0] <= middle_point_x_value <= contour_points[
-                i + 1][0]:
+        if contour_points[i][0] <= middle_point_x_value <= contour_points[i +
+                                                                          1][0]:
             return i
     return -1
 
@@ -61,3 +61,21 @@ def linear_interpolation(
 
     # No need to reshape, it is used to help PyCharm perform code static analysis
     return np.asarray(points_list, dtype=np.int32).reshape(len(points_list), 2)
+
+
+# Get two extreme points from the current inhalation or exhalation dataframe
+def get_two_extreme_points(
+        curr_slice_df: pd.DataFrame) -> Tuple[Tuple[int, int], Tuple[int, int]]:
+
+    curr_slice_df = curr_slice_df[curr_slice_df['x_value'] != 0]
+    left_extreme_point_x = min(curr_slice_df['x_value'])
+    left_extreme_point_y = curr_slice_df.loc[
+        curr_slice_df['x_value'] ==
+        left_extreme_point_x]['y_value'].tolist()[-1]
+    right_extreme_point_x = max(curr_slice_df['x_value'])
+    right_extreme_point_y = curr_slice_df.loc[
+        curr_slice_df['x_value'] ==
+        right_extreme_point_x]['y_value'].tolist()[-1]
+
+    return (left_extreme_point_x, left_extreme_point_y), (right_extreme_point_x,
+                                                          right_extreme_point_y)

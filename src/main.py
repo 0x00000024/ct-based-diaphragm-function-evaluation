@@ -80,10 +80,22 @@ def in_or_ex_analysis(patient_id: str, category: str,
     return gif_url, html_url, csv_url
 
 
-df = pd.read_csv('test/input.csv', dtype={'patient_id': str, 'start_image_number': int, 'stop_image_number': int,
-                                          'in_2d': str, 'in_3d': str, 'in_csv': str, 'ex_2d': str, 'ex_3d': str,
-                                          'ex_csv': str, 'merged_3d': 'str', 'volume (cm^3)': float,
-                                          'longest dist (cm)': float, 'shortest dist (cm)': float})
+df = pd.read_csv('test/input.csv',
+                 dtype={
+                     'patient_id': str,
+                     'start_image_number': int,
+                     'stop_image_number': int,
+                     'in_2d': str,
+                     'in_3d': str,
+                     'in_csv': str,
+                     'ex_2d': str,
+                     'ex_3d': str,
+                     'ex_csv': str,
+                     'merged_3d': 'str',
+                     'volume (cm^3)': float,
+                     'longest dist (cm)': float,
+                     'shortest dist (cm)': float
+                 })
 
 for index, row in df.iterrows():
     patient_id = row['patient_id']

@@ -2,11 +2,10 @@ import math
 from typing import List, Tuple
 import numpy as np
 import typing
+import pandas as pd
 from nptyping import NDArray
 from numpy import vstack, ones
 from numpy.linalg import lstsq
-
-from src.utils.debugger import my_debugger, var_info
 
 
 def get_slope_between_two_points(x1: float, y1: float, x2: float,
@@ -28,8 +27,8 @@ def get_middle_point_index(position: str,
     middle_point_x_value = int(
         (contour_points[start_index][0] + contour_points[stop_index][0]) / 2)
     for i in range(start_index, stop_index - 1, step):
-        if contour_points[i][0] <= middle_point_x_value <= contour_points[
-                i + 1][0]:
+        if contour_points[i][0] <= middle_point_x_value <= contour_points[i +
+                                                                          1][0]:
             return i
     return -1
 
@@ -45,7 +44,6 @@ def get_two_equation_least_squares_solution(
 def linear_interpolation(
         points: NDArray[(2, 2),
                         np.int32]) -> NDArray[(typing.Any, 2), np.int32]:
-
     m, c = get_two_equation_least_squares_solution(points)
     point_a = points[0]
     point_a_x = point_a[0]
@@ -61,3 +59,29 @@ def linear_interpolation(
 
     # No need to reshape, it is used to help PyCharm perform code static analysis
     return np.asarray(points_list, dtype=np.int32).reshape(len(points_list), 2)
+
+
+# Get the number of points at the bottom of the left and right lungs
+def get_number_of_points(curr_slice_df: pd.DataFrame) -> Tuple[int, int]:
+    cut_off_point_index = curr_slice_df.loc[curr_slice_df['x_value'] == 0]['Unnamed: 0'].tolist()[0]
+
+    curr_slice_df = curr_slice_df[curr_slice_df['x_value'] != 0]
+
+    left_lung_dict = {}
+    right_lung_dict = {}
+
+    for index, row in curr_slice_df.iterrows():
+        # Left lung
+        if index < cut_off_point_index:
+            if row['x_value'] not in left_lung_dict:
+                left_lung_dict[row['x_value']] = 1
+            else:
+                left_lung_dict[row['x_value']] += 1
+        # Right lung
+        if index > cut_off_point_index:
+            if row['x_value'] not in right_lung_dict:
+                right_lung_dict[row['x_value']] = 1
+            else:
+                right_lung_dict[row['x_value']] += 1
+
+    return len(left_lung_dict.keys()), len(right_lung_dict.keys())

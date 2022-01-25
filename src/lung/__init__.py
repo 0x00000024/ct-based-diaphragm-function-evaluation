@@ -62,8 +62,15 @@ class Lung:
         result = np.hstack((result, np.full((result.shape[0], 1),
                                             image_number)))
 
+        # Add an auxiliary point to distinguish left and right lungs
+        aux_point = [[0, 0, settings.initial_slice_interval, image_number]]
+
         if settings.diaphragm_points is None:
             settings.diaphragm_points = result
         else:
-            settings.diaphragm_points = np.concatenate(
-                [settings.diaphragm_points, result])
+            if self.position == 'right':
+                settings.diaphragm_points = np.concatenate(
+                    [settings.diaphragm_points, aux_point, result])
+            else:
+                settings.diaphragm_points = np.concatenate(
+                    [settings.diaphragm_points, result])

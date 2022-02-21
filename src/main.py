@@ -1,6 +1,5 @@
 import os
-from os import listdir
-from os.path import isfile, join
+import sys
 from pathlib import Path
 from typing import List, Tuple
 import cv2
@@ -9,6 +8,7 @@ from slice import handle_lung_slice
 from colorama import Fore, init
 import settings
 from src.merger import merger
+from src.utils.geometry_utils import get_x_range_for_last_slice
 from src.utils.image_utils import jpg2gif
 from timeit import default_timer as timer
 import plotly.express as px
@@ -80,6 +80,53 @@ def in_or_ex_analysis(patient_id: str, category: str,
 
 
 def main() -> None:
+    csv_url_df = pd.read_csv('test/csv_url.csv',
+                         dtype={
+                             'id': str,
+                             'patient_id': str,
+                             'in_csv': str,
+                             'ex_csv': str,
+                         })
+
+    left_lung_x_value_ranges = []
+    right_lung_x_value_ranges = []
+    for index, row in csv_url_df.iterrows():
+        print(row["patient_id"])
+        dtype = {'image_number': int, 'x_value': int, 'y_value': int}
+        csv_in_df = pd.read_csv(row["in_csv"], dtype=dtype)
+        csv_ex_df = pd.read_csv(row["ex_csv"], dtype=dtype)
+        left_lung_range, right_lung_range = get_x_range_for_last_slice(csv_in_df)
+        left_lung_x_value_ranges.append(left_lung_range)
+        right_lung_x_value_ranges.append(right_lung_range)
+        left_lung_range, right_lung_range = get_x_range_for_last_slice(csv_ex_df)
+        left_lung_x_value_ranges.append(left_lung_range)
+        right_lung_x_value_ranges.append(right_lung_range)
+
+    left_lung_lower_x_value = 0
+    left_lung_upper_x_value = 512
+    for range in left_lung_x_value_ranges:
+        if range[0] > left_lung_lower_x_value:
+            left_lung_lower_x_value = range[0]
+        if range[1] < left_lung_upper_x_value:
+            left_lung_upper_x_value = range[1]
+
+    right_lung_lower_x_value = 0
+    right_lung_upper_x_value = 512
+    for range in right_lung_x_value_ranges:
+        if range[0] > right_lung_lower_x_value:
+            right_lung_lower_x_value = range[0]
+        if range[1] < right_lung_upper_x_value:
+            right_lung_upper_x_value = range[1]
+
+    print("left_lung_x_value_ranges")
+    print(left_lung_x_value_ranges)
+    print("right_lung_x_value_ranges")
+    print(right_lung_x_value_ranges)
+    print(left_lung_lower_x_value, left_lung_upper_x_value)
+    print(right_lung_lower_x_value, right_lung_upper_x_value)
+
+    sys.exit(0)
+
     df = pd.read_csv('test/input.csv',
                      dtype={
                          'patient_id': str,

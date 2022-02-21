@@ -86,15 +86,17 @@ def get_number_of_points(curr_slice_df: pd.DataFrame) -> Tuple[int, int]:
     for index, row in curr_slice_df.iterrows():
         # Left lung
         if index < cut_off_point_index:
-            if row['x_value'] not in left_lung_dict:
-                left_lung_dict[row['x_value']] = 1
-            else:
-                left_lung_dict[row['x_value']] += 1
+            if 127 < row['x_value'] < 162:
+                if row['x_value'] not in left_lung_dict:
+                    left_lung_dict[row['x_value']] = 1
+                else:
+                    left_lung_dict[row['x_value']] += 1
         # Right lung
         if index > cut_off_point_index:
-            if row['x_value'] not in right_lung_dict:
-                right_lung_dict[row['x_value']] = 1
-            else:
-                right_lung_dict[row['x_value']] += 1
+            if 355 < row['x_value'] < 387:
+                if row['x_value'] not in right_lung_dict:
+                    right_lung_dict[row['x_value']] = 1
+                else:
+                    right_lung_dict[row['x_value']] += 1
 
     return len(left_lung_dict.keys()), len(right_lung_dict.keys())

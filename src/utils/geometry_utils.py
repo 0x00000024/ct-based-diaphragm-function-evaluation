@@ -61,6 +61,19 @@ def linear_interpolation(
     return np.asarray(points_list, dtype=np.int32).reshape(len(points_list), 2)
 
 
+# Get the x value range of the last slice from a single CSV file (including left and right lungs)
+def get_x_range_for_last_slice(df: pd.DataFrame) -> Tuple[Tuple[int, int], Tuple[int, int]]:
+    last_image_number = df.iloc[-1]['image_number']
+    last_image_df = df.loc[df['image_number'] == last_image_number]
+    cut_off_point_index = last_image_df.loc[last_image_df['x_value'] == 0]['Unnamed: 0'].tolist()[0]
+
+    left_lung_df = last_image_df[last_image_df['Unnamed: 0'] < cut_off_point_index]
+    right_lung_df = last_image_df[last_image_df['Unnamed: 0'] > cut_off_point_index]
+
+    return (left_lung_df.iloc[0]['x_value'], left_lung_df.iloc[-1]['x_value']), \
+           (right_lung_df.iloc[0]['x_value'], right_lung_df.iloc[-1]['x_value'])
+
+
 # Get the number of points at the bottom of the left and right lungs
 def get_number_of_points(curr_slice_df: pd.DataFrame) -> Tuple[int, int]:
     cut_off_point_index = curr_slice_df.loc[curr_slice_df['x_value'] == 0]['Unnamed: 0'].tolist()[0]

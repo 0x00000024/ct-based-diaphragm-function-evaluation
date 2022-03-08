@@ -98,18 +98,16 @@ def get_left_right_base_area(curr_slice_df: pd.DataFrame) -> Tuple[float, float]
     for index, row in curr_slice_df.groupby(curr_slice_df.index // 2):
         # Left lung
         if index < cut_off_point_index:
-            if 127 < row.iloc[0]['x_value'] < 162:
-                # Ignore redundant data
-                if row.iloc[0]['x_value'] not in left_lung_dict:
-                    left_lung_dict[row.iloc[0]['x_value']] = 1
-                    left_lung_total_base_area += get_local_area(row.iloc[-1]['y_value'], row.iloc[0]['y_value'])
+            # Ignore redundant data
+            if row.iloc[0]['x_value'] not in left_lung_dict:
+                left_lung_dict[row.iloc[0]['x_value']] = 1
+                left_lung_total_base_area += get_local_area(row.iloc[-1]['y_value'], row.iloc[0]['y_value'])
 
         # Right lung
         if index > cut_off_point_index:
-            if 355 < row.iloc[0]['x_value'] < 387:
-                # Ignore redundant data
-                if row.iloc[0]['x_value'] not in right_lung_dict:
-                    right_lung_dict[row.iloc[0]['x_value']] = 1
-                    right_lung_total_base_area += get_local_area(row.iloc[-1]['y_value'], row.iloc[0]['y_value'])
+            # Ignore redundant data
+            if row.iloc[0]['x_value'] not in right_lung_dict:
+                right_lung_dict[row.iloc[0]['x_value']] = 1
+                right_lung_total_base_area += get_local_area(row.iloc[-1]['y_value'], row.iloc[0]['y_value'])
 
     return left_lung_total_base_area, right_lung_total_base_area

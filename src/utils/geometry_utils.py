@@ -6,6 +6,7 @@ import pandas as pd
 from nptyping import NDArray
 from numpy import vstack, ones
 from numpy.linalg import lstsq
+import settings
 
 
 def get_slope_between_two_points(x1: float, y1: float, x2: float,
@@ -74,29 +75,41 @@ def get_x_range_for_last_slice(df: pd.DataFrame) -> Tuple[Tuple[int, int], Tuple
            (right_lung_df.iloc[0]['x_value'], right_lung_df.iloc[-1]['x_value'])
 
 
-# Get the number of points at the bottom of the left and right lungs
-def get_number_of_points(curr_slice_df: pd.DataFrame) -> Tuple[int, int]:
+def get_local_area(y1: float, y2: float) -> float:
+    long_side = abs(y2 - y1) * settings.row_spacing
+    if long_side <= 0:
+        return 0
+    short_side = 1 * settings.col_spacing
+    hypotenuse = math.hypot(short_side, long_side)
+    return hypotenuse * settings.thickness
+
+
+# Get the area of the bottom of the left and right lungs for the current slice
+def get_left_right_base_area(curr_slice_df: pd.DataFrame) -> Tuple[float, float]:
     cut_off_point_index = curr_slice_df.loc[curr_slice_df['x_value'] == 0]['Unnamed: 0'].tolist()[0]
 
     curr_slice_df = curr_slice_df[curr_slice_df['x_value'] != 0]
 
     left_lung_dict = {}
     right_lung_dict = {}
+    left_lung_total_base_area = 0
+    right_lung_total_base_area = 0
 
-    for index, row in curr_slice_df.iterrows():
+    for index, row in curr_slice_df.groupby(curr_slice_df.index // 2):
         # Left lung
         if index < cut_off_point_index:
-            if 127 < row['x_value'] < 162:
-                if row['x_value'] not in left_lung_dict:
-                    left_lung_dict[row['x_value']] = 1
-                else:
-                    left_lung_dict[row['x_value']] += 1
+            if 127 < row.iloc[0]['x_value'] < 162:
+                # Ignore redundant data
+                if row.iloc[0]['x_value'] not in left_lung_dict:
+                    left_lung_dict[row.iloc[0]['x_value']] = 1
+                    left_lung_total_base_area += get_local_area(row.iloc[-1]['y_value'], row.iloc[0]['y_value'])
+
         # Right lung
         if index > cut_off_point_index:
-            if 355 < row['x_value'] < 387:
-                if row['x_value'] not in right_lung_dict:
-                    right_lung_dict[row['x_value']] = 1
-                else:
-                    right_lung_dict[row['x_value']] += 1
+            if 355 < row.iloc[0]['x_value'] < 387:
+                # Ignore redundant data
+                if row.iloc[0]['x_value'] not in right_lung_dict:
+                    right_lung_dict[row.iloc[0]['x_value']] = 1
+                    right_lung_total_base_area += get_local_area(row.iloc[-1]['y_value'], row.iloc[0]['y_value'])
 
-    return len(left_lung_dict.keys()), len(right_lung_dict.keys())
+    return left_lung_total_base_area, right_lung_total_base_area

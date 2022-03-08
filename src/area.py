@@ -1,29 +1,26 @@
 from typing import Tuple
 import pandas as pd
-import settings
 from colorama import Fore
-from src.utils.geometry_utils import get_number_of_points
+from src.utils.geometry_utils import get_left_right_base_area
 
 
-def get_in_or_ex_area(df: pd.DataFrame) -> Tuple[int, int]:
+def get_in_or_ex_area(df: pd.DataFrame) -> Tuple[float, float]:
     start_image_num = df.iloc[0]['image_number']
     end_image_num = df.iloc[-1]['image_number']
 
-    total_left_pixel_num = 0
-    total_right_pixel_num = 0
+    left_lung_total_base_area = 0
+    right_lung_total_base_area = 0
     while start_image_num <= end_image_num:
         curr_slice_df = df.loc[df['image_number'] == start_image_num]
 
-        left_lung_pixel_num, right_lung_pixel_num = get_number_of_points(
-            curr_slice_df)
-        total_left_pixel_num += left_lung_pixel_num
-        total_right_pixel_num += right_lung_pixel_num
+        left_lung_base_area, right_lung_base_area = get_left_right_base_area(curr_slice_df)
+
+        left_lung_total_base_area += left_lung_base_area
+        right_lung_total_base_area += left_lung_base_area
 
         start_image_num += 1
 
-    one_pixel_area = settings.row_spacing * settings.thickness
-
-    return total_left_pixel_num * one_pixel_area, total_right_pixel_num * one_pixel_area
+    return left_lung_total_base_area, right_lung_total_base_area
 
 
 def get_area(in_csv: str, ex_csv: str) -> Tuple[float, float, float, float]:

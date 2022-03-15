@@ -7,6 +7,7 @@ import typing
 from nptyping import NDArray
 from os import listdir
 from os.path import isfile, join
+from pydicom import FileDataset
 import settings
 
 
@@ -25,8 +26,8 @@ def print_image_info(image: NDArray[(typing.Any, 2), np.int32]) -> None:
 
 
 def get_color_upper_lower_boundaries(
-    position: str
-) -> Tuple[NDArray[(3, ), np.uint8], NDArray[(3, ), np.uint8]]:
+        position: str
+) -> Tuple[NDArray[(3,), np.uint8], NDArray[(3,), np.uint8]]:
     if position is 'left':
         return settings.left_lung_lower_boundary, settings.left_lung_upper_boundary
     if position is 'right':
@@ -73,3 +74,23 @@ def jpg2gif(image_dirname: str, output_filename: str) -> None:
                            jpg_image_basename))
     Path(image_dirname).mkdir(parents=True, exist_ok=True)
     imageio.mimsave(image_dirname + output_filename, jpg_images)
+
+
+def get_z_value(dicom_file_dataset: FileDataset) -> float:
+    image_position_patient = dicom_file_dataset[0x20, 0x32].value
+    image_orientation_patient = dicom_file_dataset[0x20, 0x37].value
+
+    normal = [0, 0, 0]
+
+    normal[0] = image_orientation_patient[1] * image_orientation_patient[
+        5] - image_orientation_patient[2] * image_orientation_patient[4]
+    normal[1] = image_orientation_patient[2] * image_orientation_patient[
+        3] - image_orientation_patient[0] * image_orientation_patient[5]
+    normal[2] = image_orientation_patient[0] * image_orientation_patient[
+        4] - image_orientation_patient[1] * image_orientation_patient[3]
+
+    z_value = 0
+    for i in range(3):
+        z_value += normal[i] * image_position_patient[i]
+
+    return z_value

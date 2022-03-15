@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 import settings
-from src.utils.debugger import my_debugger, var_info
 from src.utils.geometry_utils import get_middle_point_index
 from src.utils.segmentation_utils import get_index_of_x_extremum_in_contours, get_index_of_y_maximum_in_contours, \
     get_monotonic_change_points_index, get_magic_slope_point_index
@@ -85,7 +84,6 @@ def extract_diaphragm_points(self, draw: bool):
                       pts=[diaphragm_points],
                       isClosed=False,
                       color=settings.color_yellow,
-                      # color=settings.color_blue,
                       thickness=2)
 
         # The point with the x extreme value - Green

@@ -1,6 +1,7 @@
 from typing import Tuple
 import pandas as pd
 from colorama import Fore
+import settings
 from src.utils.geometry_utils import get_left_right_base_area
 
 
@@ -10,14 +11,22 @@ def get_in_or_ex_area(df: pd.DataFrame) -> Tuple[float, float]:
 
     left_lung_total_base_area = 0
     right_lung_total_base_area = 0
+    settings.image_number = start_image_num
+    curr_slice_df = df.loc[df['image_number'] == start_image_num]
+    settings.z_value = curr_slice_df.iloc[0]['z_value'] * 10**-1
+    start_image_num += 1
+
     while start_image_num <= end_image_num:
         curr_slice_df = df.loc[df['image_number'] == start_image_num]
 
-        left_lung_base_area, right_lung_base_area = get_left_right_base_area(curr_slice_df)
+        left_lung_base_area, right_lung_base_area = get_left_right_base_area(
+            curr_slice_df.iloc[1:])
 
         left_lung_total_base_area += left_lung_base_area
-        right_lung_total_base_area += left_lung_base_area
+        right_lung_total_base_area += right_lung_base_area
 
+        # Update z value
+        settings.z_value = curr_slice_df.iloc[0]['z_value'] * 10**-1
         start_image_num += 1
 
     return left_lung_total_base_area, right_lung_total_base_area
@@ -34,13 +43,13 @@ def get_area(in_csv: str, ex_csv: str) -> Tuple[float, float, float, float]:
     print(Fore.GREEN + 'The area (cm^2) under the left lung during inhalation',
           in_left_area)
 
-    print(Fore.GREEN + 'The area (cm^2) under the left lung during inhalation',
+    print(Fore.GREEN + 'The area (cm^2) under the right lung during inhalation',
           in_right_area)
 
     print(Fore.GREEN + 'The area (cm^2) under the left lung during exhalation',
           ex_left_area)
 
-    print(Fore.GREEN + 'The area (cm^2) under the left lung during exhalation',
+    print(Fore.GREEN + 'The area (cm^2) under the right lung during exhalation',
           ex_right_area)
 
     return in_left_area, in_right_area, ex_left_area, ex_right_area

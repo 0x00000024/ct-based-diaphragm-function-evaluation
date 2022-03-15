@@ -1,13 +1,13 @@
 import os
 from pathlib import Path
 from typing import List, Tuple
-import cv2
 import pandas as pd
 from slice import handle_lung_slice
 from colorama import Fore
 import settings
 from src.merger import merger
 from src.utils.image_utils import jpg2gif
+import pydicom as dicom
 from timeit import default_timer as timer
 import plotly.express as px
 from src.area import get_area
@@ -21,10 +21,14 @@ def in_or_ex_analysis(patient_id: str, category: str,
                                         settings.date + '/'
     Path(settings.processed_images_dirname).mkdir(parents=True, exist_ok=True)
 
-    color_image_example = cv2.imread(settings.original_images_dirname +
-                                     images_basename[0])
-    settings.image_height = color_image_example.shape[0]
-    settings.image_width = color_image_example.shape[1]
+    image_path = settings.original_images_dirname + images_basename[0]
+    dicom_file_dataset = dicom.dcmread(image_path)
+    settings.row_spacing = float(dicom_file_dataset[0x28,
+                                                    0x30].value[0]) * 10**-1
+    settings.col_spacing = float(dicom_file_dataset[0x28,
+                                                    0x30].value[1]) * 10**-1
+    settings.image_height = int(dicom_file_dataset[0x28, 0x10].value)
+    settings.image_width = int(dicom_file_dataset[0x28, 0x11].value)
 
     for image_basename in images_basename:
         if settings.debugging_mode:
@@ -46,11 +50,11 @@ def in_or_ex_analysis(patient_id: str, category: str,
     print(Fore.BLUE + 'Generate 3D visualization of diaphragm points...\n')
     df_3d = pd.DataFrame(
         settings.diaphragm_points,
-        columns=['x_value', 'y_value', 'slice_interval', 'image_number'])
+        columns=['x_value', 'y_value', 'z_value', 'image_number'])
     fig = px.scatter_3d(df_3d,
                         x='x_value',
                         y='y_value',
-                        z='slice_interval',
+                        z='z_value',
                         range_x=[0, settings.image_height],
                         range_y=[0, settings.image_width],
                         color='image_number')
@@ -108,21 +112,23 @@ def main() -> None:
 
         images_basename = []
         for i in range(start_image_number, stop_image_number + 1, 1):
-            images_basename.append(f"IM-0001-{i:04d}.jpg")
+            images_basename.append(f"IM-0001-{i:04d}.dcm")
 
-        settings.initial_slice_interval = 2
         settings.diaphragm_points = None
         gif_url, html_url, csv_url = in_or_ex_analysis(
-            patient_id=patient_id, category='in', images_basename=images_basename)
+            patient_id=patient_id,
+            category='in',
+            images_basename=images_basename)
         df.at[index, 'in_2d'] = gif_url
         df.at[index, 'in_3d'] = html_url
         df.at[index, 'in_csv'] = csv_url
         in_csv = csv_url
 
-        settings.initial_slice_interval = 2
         settings.diaphragm_points = None
         gif_url, html_url, csv_url = in_or_ex_analysis(
-            patient_id=patient_id, category='ex', images_basename=images_basename)
+            patient_id=patient_id,
+            category='ex',
+            images_basename=images_basename)
         df.at[index, 'ex_2d'] = gif_url
         df.at[index, 'ex_3d'] = html_url
         df.at[index, 'ex_csv'] = csv_url
@@ -134,7 +140,8 @@ def main() -> None:
         category = 'mix'
         settings.processed_images_dirname = settings.images_dirname + 'processed/' + patient_id + '/' + category + '/' + \
                                             settings.date + '/'
-        Path(settings.processed_images_dirname).mkdir(parents=True, exist_ok=True)
+        Path(settings.processed_images_dirname).mkdir(parents=True,
+                                                      exist_ok=True)
 
         merger(in_csv, ex_csv, patient_id, category)
 
@@ -144,9 +151,10 @@ def main() -> None:
         df.at[index, 'merged_3d'] = html_url
 
         #############
-        # Volume
+        # Area
         #############
-        in_left_area, in_right_area, ex_left_area, ex_right_area = get_area(in_csv, ex_csv)
+        in_left_area, in_right_area, ex_left_area, ex_right_area = get_area(
+            in_csv, ex_csv)
 
         df.at[index, 'in_left_area (cm^2)'] = in_left_area
         df.at[index, 'in_right_area (cm^2)'] = in_right_area

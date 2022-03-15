@@ -1,16 +1,17 @@
 import math
 import cv2
 from colorama import Fore
-
 import settings
 from lung import Lung
-from utils.image_utils import merge_left_right_images
+from utils.image_utils import merge_left_right_images, get_z_value
+import pydicom as dicom
 
 
 def handle_lung_slice(image_basename: str) -> None:
     image_path = settings.original_images_dirname + image_basename
-    color_image = cv2.imread(image_path)
-    # color_image_backup = color_image.copy()
+    dicom_file_dataset = dicom.dcmread(image_path)
+    color_image = dicom_file_dataset.pixel_array
+
     color_image = cv2.cvtColor(color_image, cv2.COLOR_BGR2HSV)
 
     left_lung = Lung(image=color_image, position='left')
@@ -20,8 +21,7 @@ def handle_lung_slice(image_basename: str) -> None:
             == 'left') or not settings.debugging_mode:
         print(Fore.BLUE + 'Finding the contours of the left lung...')
         left_lung.get_lung_contour_points(draw=True)
-        print(Fore.BLUE +
-              'Extracting the diaphragm points of the left lung...')
+        print(Fore.BLUE + 'Extracting the diaphragm points of the left lung...')
         left_lung.extract_diaphragm_points(draw=True)
 
     if (settings.debugging_mode and settings.debug_lung_position
@@ -31,6 +31,8 @@ def handle_lung_slice(image_basename: str) -> None:
         print(Fore.BLUE +
               'Extracting the diaphragm points of the right lung...')
         right_lung.extract_diaphragm_points(draw=True)
+
+    settings.z_value = get_z_value(dicom_file_dataset)
 
     if not settings.debugging_mode:
         print(Fore.BLUE + 'Merging images of left and right lungs...')
@@ -42,6 +44,8 @@ def handle_lung_slice(image_basename: str) -> None:
             column_start_index=math.floor(settings.image_height / 2),
             column_stop_index=settings.image_height)
 
+        cv2.imshow('total lung image', merged_image)
+
     # np.set_printoptions(threshold=sys.maxsize)
 
     if settings.debugging_mode:
@@ -50,6 +54,7 @@ def handle_lung_slice(image_basename: str) -> None:
             image_number = int(image_basename.split('.')[0][-3:])
             left_lung.add_diaphragm_points_to_global_variable(
                 image_number=image_number)
+            print('z', get_z_value(dicom_file_dataset))
         if settings.debug_lung_position == 'right':
             cv2.imshow('right lung image', right_lung.image)
         # cv2.imshow('entire lung image', merged_image)
@@ -59,14 +64,14 @@ def handle_lung_slice(image_basename: str) -> None:
 
     if not settings.debugging_mode:
         image_number = int(image_basename.split('.')[0][-3:])
+
         left_lung.add_diaphragm_points_to_global_variable(
             image_number=image_number)
         right_lung.add_diaphragm_points_to_global_variable(
             image_number=image_number)
 
-        settings.initial_slice_interval += settings.slice_interval
-
+        jpg_image_basename = image_basename.split('.')[0] + '.jpg'
         print(Fore.BLUE + 'Output the result image to',
-              settings.processed_images_dirname + image_basename + '\n')
-        cv2.imwrite(settings.processed_images_dirname + image_basename,
+              settings.processed_images_dirname + jpg_image_basename + '\n')
+        cv2.imwrite(settings.processed_images_dirname + jpg_image_basename,
                     merged_image)

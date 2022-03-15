@@ -5,8 +5,7 @@ import numpy as np
 from nptyping import NDArray
 from numpy import int32
 import settings
-from src.utils.debugger import my_debugger, var_info
-from src.utils.geometry_utils import get_slope_between_two_points, get_middle_point_index
+from src.utils.geometry_utils import get_slope_between_two_points
 
 
 def handle_contour_points_data_structure(

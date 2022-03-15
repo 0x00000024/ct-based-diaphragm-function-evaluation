@@ -5,7 +5,6 @@ from typing import Union
 from .segmentation import contour, diaphragm
 import settings
 from src.utils.geometry_utils import linear_interpolation
-from src.utils.debugger import my_debugger, var_info
 
 
 class Lung:
@@ -54,16 +53,16 @@ class Lung:
         for i in range(len(result)):
             result[i][1] = settings.image_height - result[i][1]
 
-        # Add slice interval column
+        # Add z value column
         result = np.hstack(
-            (result, np.full((result.shape[0], 1), settings.initial_slice_interval)))
+            (result, np.full((result.shape[0], 1), settings.z_value)))
 
         # Add image number column
         result = np.hstack((result, np.full((result.shape[0], 1),
                                             image_number)))
 
         # Add an auxiliary point to distinguish left and right lungs
-        aux_point = [[0, 0, settings.initial_slice_interval, image_number]]
+        aux_point = [[0, 0, settings.z_value, image_number]]
 
         if settings.diaphragm_points is None:
             settings.diaphragm_points = result

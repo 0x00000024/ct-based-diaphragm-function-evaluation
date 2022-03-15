@@ -20,12 +20,13 @@ def merger(in_csv: str, ex_csv: str, patient_id: str, category: str) -> None:
     fig = px.scatter_3d(df_merge,
                         x='x_value',
                         y='y_value',
-                        z='slice_interval',
+                        z='z_value',
                         range_x=[0, settings.image_width],
                         range_y=[0, settings.image_height],
                         color='image_number')
 
-    fig.update_layout(scene_camera=settings.camera, title=patient_id + '/' + category)
+    fig.update_layout(scene_camera=settings.camera,
+                      title=patient_id + '/' + category)
     fig.data[0].marker.symbol = 'circle'
     fig.data[0].marker.size = 1
     fig.write_html(settings.processed_images_dirname + settings.html_filename)

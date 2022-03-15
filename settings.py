@@ -1,4 +1,3 @@
-from pathlib import Path
 import numpy as np
 from datetime import datetime
 
@@ -7,7 +6,7 @@ from datetime import datetime
 #############
 # debugging_mode = True
 debugging_mode = False
-debug_image_filename = 'IM-0001-0078.jpg'
+debug_image_filename = 'IM-0001-0057.dcm'
 debug_lung_position = 'left'
 # debug_lung_position = 'right'
 
@@ -26,16 +25,15 @@ processed_images_dirname = None
 image_height = None
 image_width = None
 
-slice_interval = 2
-initial_slice_interval = 2
+z_value = None
 
 # Use src/utils/hsv_thresholder.py to get the required upper and lower bounds
 # No need to reshape, it is used to help PyCharm perform code static analysis.
-left_lung_lower_boundary = np.array([6, 8, 84], dtype='uint8').reshape(1, 3)
-left_lung_upper_boundary = np.array([48, 155, 213],
+left_lung_lower_boundary = np.array([81, 0, 111], dtype='uint8').reshape(1, 3)
+left_lung_upper_boundary = np.array([103, 111, 195],
                                     dtype='uint8').reshape(1, 3)
-right_lung_lower_boundary = np.array([81, 0, 111], dtype='uint8').reshape(1, 3)
-right_lung_upper_boundary = np.array([103, 111, 195],
+right_lung_lower_boundary = np.array([6, 8, 84], dtype='uint8').reshape(1, 3)
+right_lung_upper_boundary = np.array([48, 155, 213],
                                      dtype='uint8').reshape(1, 3)
 
 #############

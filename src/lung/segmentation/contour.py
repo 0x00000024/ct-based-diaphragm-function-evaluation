@@ -1,6 +1,5 @@
 import math
 import cv2
-
 import settings
 from src.utils.image_utils import get_color_upper_lower_boundaries, convert_part_of_image_to_black
 from src.utils.segmentation_utils import handle_contour_points_data_structure, handle_multiple_contours

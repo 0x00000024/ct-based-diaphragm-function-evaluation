@@ -1,5 +1,5 @@
 import math
-from typing import List, Tuple
+from typing import Tuple
 import numpy as np
 import typing
 import pandas as pd
@@ -63,30 +63,36 @@ def linear_interpolation(
 
 
 # Get the x value range of the last slice from a single CSV file (including left and right lungs)
-def get_x_range_for_last_slice(df: pd.DataFrame) -> Tuple[Tuple[int, int], Tuple[int, int]]:
+def get_x_range_for_last_slice(
+        df: pd.DataFrame) -> Tuple[Tuple[int, int], Tuple[int, int]]:
     last_image_number = df.iloc[-1]['image_number']
     last_image_df = df.loc[df['image_number'] == last_image_number]
-    cut_off_point_index = last_image_df.loc[last_image_df['x_value'] == 0]['Unnamed: 0'].tolist()[0]
+    cut_off_point_index = last_image_df.loc[last_image_df['x_value'] ==
+                                            0]['Unnamed: 0'].tolist()[0]
 
-    left_lung_df = last_image_df[last_image_df['Unnamed: 0'] < cut_off_point_index]
-    right_lung_df = last_image_df[last_image_df['Unnamed: 0'] > cut_off_point_index]
+    left_lung_df = last_image_df[
+        last_image_df['Unnamed: 0'] < cut_off_point_index]
+    right_lung_df = last_image_df[
+        last_image_df['Unnamed: 0'] > cut_off_point_index]
 
     return (left_lung_df.iloc[0]['x_value'], left_lung_df.iloc[-1]['x_value']), \
            (right_lung_df.iloc[0]['x_value'], right_lung_df.iloc[-1]['x_value'])
 
 
-def get_local_area(y1: float, y2: float) -> float:
+def get_local_area(y1: float, y2: float, z: float) -> float:
     long_side = abs(y2 - y1) * settings.row_spacing
     if long_side <= 0:
         return 0
     short_side = 1 * settings.col_spacing
     hypotenuse = math.hypot(short_side, long_side)
-    return hypotenuse * settings.thickness
+    return hypotenuse * abs(settings.z_value - z * 10**-1)
 
 
 # Get the area of the bottom of the left and right lungs for the current slice
-def get_left_right_base_area(curr_slice_df: pd.DataFrame) -> Tuple[float, float]:
-    cut_off_point_index = curr_slice_df.loc[curr_slice_df['x_value'] == 0]['Unnamed: 0'].tolist()[0]
+def get_left_right_base_area(
+        curr_slice_df: pd.DataFrame) -> Tuple[float, float]:
+    cut_off_point_index = curr_slice_df.loc[curr_slice_df['x_value'] ==
+                                            0]['Unnamed: 0'].tolist()[0]
 
     curr_slice_df = curr_slice_df[curr_slice_df['x_value'] != 0]
 
@@ -97,19 +103,19 @@ def get_left_right_base_area(curr_slice_df: pd.DataFrame) -> Tuple[float, float]
 
     for index, row in curr_slice_df.groupby(curr_slice_df.index // 2):
         # Left lung
-        if index < cut_off_point_index:
-            if 127 < row.iloc[0]['x_value'] < 162:
-                # Ignore redundant data
-                if row.iloc[0]['x_value'] not in left_lung_dict:
-                    left_lung_dict[row.iloc[0]['x_value']] = 1
-                    left_lung_total_base_area += get_local_area(row.iloc[-1]['y_value'], row.iloc[0]['y_value'])
+        if index < cut_off_point_index / 2:
+            if row.iloc[0]['x_value'] not in left_lung_dict:
+                left_lung_dict[row.iloc[0]['x_value']] = 1
+                left_lung_total_base_area += get_local_area(
+                    row.iloc[-1]['y_value'], row.iloc[0]['y_value'],
+                    row.iloc[0]['z_value'])
 
         # Right lung
-        if index > cut_off_point_index:
-            if 355 < row.iloc[0]['x_value'] < 387:
-                # Ignore redundant data
-                if row.iloc[0]['x_value'] not in right_lung_dict:
-                    right_lung_dict[row.iloc[0]['x_value']] = 1
-                    right_lung_total_base_area += get_local_area(row.iloc[-1]['y_value'], row.iloc[0]['y_value'])
+        if index > cut_off_point_index / 2:
+            if row.iloc[0]['x_value'] not in right_lung_dict:
+                right_lung_dict[row.iloc[0]['x_value']] = 1
+                right_lung_total_base_area += get_local_area(
+                    row.iloc[-1]['y_value'], row.iloc[0]['y_value'],
+                    row.iloc[0]['z_value'])
 
     return left_lung_total_base_area, right_lung_total_base_area

@@ -9,6 +9,13 @@ def get_lung_contour_points(self, draw: bool) -> None:
 
     # Rewrite the value of the left half of the image directly to 0, which is black,
     # to remove the left lung that we don't need after color-based segmentation.
+    if self.position is 'left':
+        self.image = convert_part_of_image_to_black(
+            image=self.image,
+            row_start_index=0,
+            row_stop_index=settings.image_height - 1,
+            column_start_index=math.floor(settings.image_height / 2) - 1,
+            column_stop_index=settings.image_height - 1)
     if self.position is 'right':
         self.image = convert_part_of_image_to_black(
             image=self.image,

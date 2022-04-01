@@ -54,7 +54,6 @@ def handle_lung_slice(image_basename: str) -> None:
             image_number = int(image_basename.split('.')[0][-3:])
             left_lung.add_diaphragm_points_to_global_variable(
                 image_number=image_number)
-            print('z', get_z_value(dicom_file_dataset))
         if settings.debug_lung_position == 'right':
             cv2.imshow('right lung image', right_lung.image)
         # cv2.imshow('entire lung image', merged_image)

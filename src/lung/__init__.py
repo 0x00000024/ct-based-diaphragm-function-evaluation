@@ -61,8 +61,12 @@ class Lung:
         result = np.hstack((result, np.full((result.shape[0], 1),
                                             image_number)))
 
+        # Add category column
+        result = np.hstack(
+            (result, np.full((result.shape[0], 1), settings.category)))
+
         # Add an auxiliary point to distinguish left and right lungs
-        aux_point = [[0, 0, settings.z_value, image_number]]
+        aux_point = [[0, 0, settings.z_value, image_number, settings.category]]
 
         if settings.diaphragm_points is None:
             settings.diaphragm_points = result

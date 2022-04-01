@@ -23,12 +23,14 @@ def merger(in_csv: str, ex_csv: str, patient_id: str, category: str) -> None:
                         z='z_value',
                         range_x=[0, settings.image_width],
                         range_y=[0, settings.image_height],
-                        color='image_number')
+                        color='category')
 
     fig.update_layout(scene_camera=settings.camera,
                       title=patient_id + '/' + category)
     fig.data[0].marker.symbol = 'circle'
     fig.data[0].marker.size = 1
+    fig.data[1].marker.symbol = 'circle'
+    fig.data[1].marker.size = 1
     fig.write_html(settings.processed_images_dirname + settings.html_filename)
 
     print(Fore.BLUE + 'Uploading demo files to server...\n')

@@ -50,14 +50,14 @@ def in_or_ex_analysis(patient_id: str, category: str,
     print(Fore.BLUE + 'Generate 3D visualization of diaphragm points...\n')
     df_3d = pd.DataFrame(
         settings.diaphragm_points,
-        columns=['x_value', 'y_value', 'z_value', 'image_number'])
+        columns=['x_value', 'y_value', 'z_value', 'image_number', 'category'])
     fig = px.scatter_3d(df_3d,
                         x='x_value',
                         y='y_value',
                         z='z_value',
                         range_x=[0, settings.image_height],
                         range_y=[0, settings.image_width],
-                        color='image_number')
+                        color='category')
     fig.update_layout(scene_camera=settings.camera,
                       title=patient_id + '/' + category)
     fig.data[0].marker.symbol = 'circle'

@@ -15,6 +15,7 @@ debug_lung_position = 'left'
 #############
 images_dirname = '/Users/ethan/test/CBDFE/ct-based-diaphragm-function-evaluation/images/'
 # patient_id = '10602422'
+category = None
 # category = 'in'
 # category = 'ex'
 # category = 'mix'
@@ -29,11 +30,19 @@ z_value = None
 
 # Use src/utils/hsv_thresholder.py to get the required upper and lower bounds
 # No need to reshape, it is used to help PyCharm perform code static analysis.
-left_lung_lower_boundary = np.array([81, 0, 111], dtype='uint8').reshape(1, 3)
-left_lung_upper_boundary = np.array([103, 111, 195],
+# left_lung_lower_boundary = np.array([81, 0, 111], dtype='uint8').reshape(1, 3)
+# left_lung_upper_boundary = np.array([103, 111, 195],
+#                                     dtype='uint8').reshape(1, 3)
+# right_lung_lower_boundary = np.array([6, 8, 84], dtype='uint8').reshape(1, 3)
+# right_lung_upper_boundary = np.array([48, 155, 213],
+#                                      dtype='uint8').reshape(1, 3)
+
+# Segment entire lung
+left_lung_lower_boundary = np.array([4, 0, 41], dtype='uint8').reshape(1, 3)
+left_lung_upper_boundary = np.array([179, 255, 255],
                                     dtype='uint8').reshape(1, 3)
-right_lung_lower_boundary = np.array([6, 8, 84], dtype='uint8').reshape(1, 3)
-right_lung_upper_boundary = np.array([48, 155, 213],
+right_lung_lower_boundary = np.array([4, 0, 41], dtype='uint8').reshape(1, 3)
+right_lung_upper_boundary = np.array([179, 255, 255],
                                      dtype='uint8').reshape(1, 3)
 
 #############

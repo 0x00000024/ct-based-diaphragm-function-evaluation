@@ -60,8 +60,15 @@ upload_cmd = None
 #############
 diaphragm_points = None
 # unit: cm
-row_spacing = 0.3 * 10**-1
-col_spacing = 0.28 * 10**-1
+row_spacing = None
+col_spacing = None
+
+in_row_spacing = None
+in_col_spacing = None
+
+ex_row_spacing = None
+ex_col_spacing = None
+
 thickness = 1 * 10**-1
 
 #############

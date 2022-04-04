@@ -97,7 +97,9 @@ def main() -> None:
                          'ex_csv': str,
                          'ex_left_area (cm^2)': float,
                          'ex_right_area (cm^2)': float,
-                         'merged_3d': 'str',
+                         'merged_3d': str,
+                         'row_spacing (cm)': float,
+                         'col_spacing (cm)': float,
                      })
 
     for index, row in df.iterrows():
@@ -160,6 +162,8 @@ def main() -> None:
         df.at[index, 'in_right_area (cm^2)'] = in_right_area
         df.at[index, 'ex_left_area (cm^2)'] = ex_left_area
         df.at[index, 'ex_right_area (cm^2)'] = ex_right_area
+        df.at[index, 'row_spacing (cm)'] = settings.row_spacing
+        df.at[index, 'col_spacing (cm)'] = settings.col_spacing
 
         end_time = timer()
         elapsed_time = end_time - start_time

@@ -19,9 +19,9 @@ def in_or_ex_analysis(patient_id: str, category: str,
                       images_basename: List[str]) -> None:
     settings.category = 'in' if category == 'in' else 'ex'
     settings.original_images_dirname = settings.images_dirname + 'original/' + patient_id + '/' + category + '/'
-    settings.processed_images_dirname = settings.images_dirname + 'processed/' + patient_id + '/' + category + '/' + \
-                                        settings.date + '/'
-    Path(settings.processed_images_dirname).mkdir(parents=True, exist_ok=True)
+    # settings.processed_images_dirname = settings.images_dirname + 'processed/' + patient_id + '/' + category + '/' + \
+    #                                     settings.date + '/'
+    # Path(settings.processed_images_dirname).mkdir(parents=True, exist_ok=True)
 
     image_path = settings.original_images_dirname + images_basename[0]
     dicom_file_dataset = dicom.dcmread(image_path)
@@ -32,27 +32,31 @@ def in_or_ex_analysis(patient_id: str, category: str,
 
     if category == 'in':
         settings.in_row_spacing = float(
-            dicom_file_dataset[0x28, 0x30].value[0]) * 10**-1
+            dicom_file_dataset[0x28, 0x30].value[0]) * 10 ** -1
         settings.in_col_spacing = float(
-            dicom_file_dataset[0x28, 0x30].value[1]) * 10**-1
+            dicom_file_dataset[0x28, 0x30].value[1]) * 10 ** -1
     if category == 'ex':
         settings.ex_row_spacing = float(
-            dicom_file_dataset[0x28, 0x30].value[0]) * 10**-1
+            dicom_file_dataset[0x28, 0x30].value[0]) * 10 ** -1
         settings.ex_col_spacing = float(
-            dicom_file_dataset[0x28, 0x30].value[1]) * 10**-1
+            dicom_file_dataset[0x28, 0x30].value[1]) * 10 ** -1
 
     settings.image_height = int(dicom_file_dataset[0x28, 0x10].value)
     settings.image_width = int(dicom_file_dataset[0x28, 0x11].value)
 
-    # for image_basename in images_basename:
-    #     if settings.debugging_mode:
-    #         if image_basename != settings.debug_image_filename:
-    #             continue
-    #
-    #     print(Fore.BLUE + 'Current slice image filename: ',
-    #           category + '/' + image_basename)
-    #     handle_lung_slice(image_basename)
-    #
+    margin_start_index, margin_stop_index = None, None
+    for image_basename in images_basename:
+        if settings.debugging_mode:
+            if image_basename != settings.debug_image_filename:
+                continue
+
+        print(Fore.BLUE + 'Current slice image filename: ',
+              category + '/' + image_basename)
+        margin_start_index, margin_stop_index = handle_lung_slice(image_basename)
+        break
+
+    print(f'{patient_id},{category},{margin_start_index},{margin_stop_index}', file=open("output.txt", "a"))
+
     # url_path = '/' + patient_id + '/' + category + '/' + settings.date + '/'
     # gif_url = settings.url_origin + url_path + settings.gif_filename
     # html_url = settings.url_origin + url_path + settings.html_filename
@@ -99,65 +103,29 @@ def main() -> None:
     df = pd.read_csv('test/input.csv',
                      dtype={
                          'patient_id': str,
-                         'in_csv': str,
-                         'ex_csv': str,
-                         'row_spacing (cm)': float,
-                         'col_spacing (cm)': float,
-                         'in_left_lung_top_y_value': int,
-                         'in_left_lung_bottom_y_value': int,
-                         'in_left_lung_max_height (cm)': float,
-                         'in_left_lung_max_height_image_index': int,
-                         'in_left_lung_left_x_value': int,
-                         'in_left_lung_right_x_value': int,
-                         'in_left_lung_max_width (cm)': float,
-                         'in_left_lung_max_width_image_index': int,
-                         'in_right_lung_top_y_value': int,
-                         'in_right_lung_bottom_y_value': int,
-                         'in_right_lung_max_height (cm)': float,
-                         'in_right_lung_max_height_image_index': int,
-                         'in_right_lung_left_x_value': int,
-                         'in_right_lung_right_x_value': int,
-                         'in_right_lung_max_width (cm)': float,
-                         'in_right_lung_max_width_image_index': int,
-                         'ex_left_lung_top_y_value': int,
-                         'ex_left_lung_bottom_y_value': int,
-                         'ex_left_lung_max_height (cm)': float,
-                         'ex_left_lung_max_height_image_index': int,
-                         'ex_left_lung_left_x_value': int,
-                         'ex_left_lung_right_x_value': int,
-                         'ex_left_lung_max_width (cm)': float,
-                         'ex_left_lung_max_width_image_index': int,
-                         'ex_right_lung_top_y_value': int,
-                         'ex_right_lung_bottom_y_value': int,
-                         'ex_right_lung_max_height (cm)': float,
-                         'ex_right_lung_max_height_image_index': int,
-                         'ex_right_lung_left_x_value': int,
-                         'ex_right_lung_right_x_value': int,
-                         'ex_right_lung_max_width (cm)': float,
-                         'ex_right_lung_max_width_image_index': int,
                      })
 
     for index, row in df.iterrows():
         patient_id = row['patient_id']
-        # start_image_number = row['start_image_number']
-        # stop_image_number = row['stop_image_number']
-        settings.row_spacing = row['row_spacing (cm)']
-        settings.col_spacing = row['col_spacing (cm)']
+        start_image_number = row['start_image_number']
+        stop_image_number = row['stop_image_number']
+        # settings.row_spacing = row['row_spacing (cm)']
+        # settings.col_spacing = row['col_spacing (cm)']
         print('patient_id', patient_id)
         # print('start_image_number', start_image_number)
         # print('stop_image_number', stop_image_number)
 
         start_time = timer()
 
-        # images_basename = []
-        # for i in range(start_image_number, stop_image_number + 1, 1):
-        #     images_basename.append(f"IM-0001-{i:04d}.dcm")
-        #
-        # settings.diaphragm_points = None
-        # in_or_ex_analysis(patient_id=patient_id, category='in', images_basename=images_basename)
-        #
-        # settings.diaphragm_points = None
-        # in_or_ex_analysis( patient_id=patient_id, category='ex', images_basename=images_basename)
+        images_basename = []
+        for i in range(start_image_number, stop_image_number + 1, 1):
+            images_basename.append(f"IM-0001-{i:04d}.dcm")
+
+        settings.diaphragm_points = None
+        in_or_ex_analysis(patient_id=patient_id, category='in', images_basename=images_basename)
+
+        settings.diaphragm_points = None
+        in_or_ex_analysis(patient_id=patient_id, category='ex', images_basename=images_basename)
 
         #############
         # Merger
@@ -196,56 +164,56 @@ def main() -> None:
         #############
         # Max height and width
         #############
-        in_csv = row['in_csv']
-        ex_csv = row['ex_csv']
-        print('first group')
-        in_left_lung_top_y_value, in_left_lung_bottom_y_value, in_left_lung_max_height, in_left_lung_max_height_image_index, in_left_lung_left_x_value, in_left_lung_right_x_value, in_left_lung_max_width, in_left_lung_max_width_image_index = get_in_or_ex_left_or_right_max_height_width(
-            position='left', csv_url=in_csv)
-        print('second group')
-        in_right_lung_top_y_value, in_right_lung_bottom_y_value, in_right_lung_max_height, in_right_lung_max_height_image_index, in_right_lung_left_x_value, in_right_lung_right_x_value, in_right_lung_max_width, in_right_lung_max_width_image_index = get_in_or_ex_left_or_right_max_height_width(
-            position='right', csv_url=in_csv)
-        print('third group')
-        ex_left_lung_top_y_value, ex_left_lung_bottom_y_value, ex_left_lung_max_height, ex_left_lung_max_height_image_index, ex_left_lung_left_x_value, ex_left_lung_right_x_value, ex_left_lung_max_width, ex_left_lung_max_width_image_index = get_in_or_ex_left_or_right_max_height_width(
-            position='left', csv_url=ex_csv)
-        print('forth group')
-        ex_right_lung_top_y_value, ex_right_lung_bottom_y_value, ex_right_lung_max_height, ex_right_lung_max_height_image_index, ex_right_lung_left_x_value, ex_right_lung_right_x_value, ex_right_lung_max_width, ex_right_lung_max_width_image_index = get_in_or_ex_left_or_right_max_height_width(
-            position='right', csv_url=ex_csv)
-
-        df.at[index, 'in_left_lung_top_y_value'] = in_left_lung_top_y_value
-        df.at[index, 'in_left_lung_bottom_y_value'] = in_left_lung_bottom_y_value
-        df.at[index, 'in_left_lung_max_height (cm)'] = in_left_lung_max_height
-        df.at[index, 'in_left_lung_max_height_image_index'] = in_left_lung_max_height_image_index
-        df.at[index, 'in_left_lung_left_x_value'] = in_left_lung_left_x_value
-        df.at[index, 'in_left_lung_right_x_value'] = in_left_lung_right_x_value
-        df.at[index, 'in_left_lung_max_width (cm)'] = in_left_lung_max_width
-        df.at[index, 'in_left_lung_max_width_image_index'] = in_left_lung_max_width_image_index
-
-        df.at[index, 'in_right_lung_top_y_value'] = in_right_lung_top_y_value
-        df.at[index, 'in_right_lung_bottom_y_value'] = in_right_lung_bottom_y_value
-        df.at[index, 'in_right_lung_max_height (cm)'] = in_right_lung_max_height
-        df.at[index, 'in_right_lung_max_height_image_index'] = in_right_lung_max_height_image_index
-        df.at[index, 'in_right_lung_left_x_value'] = in_right_lung_right_x_value
-        df.at[index, 'in_right_lung_right_x_value'] = in_right_lung_right_x_value
-        df.at[index, 'in_right_lung_max_width (cm)'] = in_right_lung_max_width
-        df.at[index, 'in_right_lung_max_width_image_index'] = in_right_lung_max_width_image_index
-
-        df.at[index, 'ex_left_lung_top_y_value'] = ex_left_lung_top_y_value
-        df.at[index, 'ex_left_lung_bottom_y_value'] = ex_left_lung_bottom_y_value
-        df.at[index, 'ex_left_lung_max_height (cm)'] = ex_left_lung_max_height
-        df.at[index, 'ex_left_lung_max_height_image_index'] = ex_left_lung_max_height_image_index
-        df.at[index, 'ex_left_lung_left_x_value'] = ex_left_lung_left_x_value
-        df.at[index, 'ex_left_lung_right_x_value'] = ex_left_lung_right_x_value
-        df.at[index, 'ex_left_lung_max_width (cm)'] = ex_left_lung_max_width
-        df.at[index, 'ex_left_lung_max_width_image_index'] = ex_left_lung_max_width_image_index
-
-        df.at[index, 'ex_right_lung_top_y_value'] = ex_right_lung_top_y_value
-        df.at[index, 'ex_right_lung_bottom_y_value'] = ex_right_lung_bottom_y_value
-        df.at[index, 'ex_right_lung_max_height (cm)'] = ex_right_lung_max_height
-        df.at[index, 'ex_right_lung_max_height_image_index'] = ex_right_lung_max_height_image_index
-        df.at[index, 'ex_right_lung_left_x_value'] = ex_right_lung_left_x_value
-        df.at[index, 'ex_right_lung_right_x_value'] = ex_right_lung_right_x_value
-        df.at[index, 'ex_right_lung_max_width (cm)'] = ex_right_lung_max_width
-        df.at[index, 'ex_right_lung_max_width_image_index'] = ex_right_lung_max_width_image_index
+        # in_csv = row['in_csv']
+        # ex_csv = row['ex_csv']
+        # print('first group')
+        # in_left_lung_top_y_value, in_left_lung_bottom_y_value, in_left_lung_max_height, in_left_lung_max_height_image_index, in_left_lung_left_x_value, in_left_lung_right_x_value, in_left_lung_max_width, in_left_lung_max_width_image_index = get_in_or_ex_left_or_right_max_height_width(
+        #     position='left', csv_url=in_csv)
+        # print('second group')
+        # in_right_lung_top_y_value, in_right_lung_bottom_y_value, in_right_lung_max_height, in_right_lung_max_height_image_index, in_right_lung_left_x_value, in_right_lung_right_x_value, in_right_lung_max_width, in_right_lung_max_width_image_index = get_in_or_ex_left_or_right_max_height_width(
+        #     position='right', csv_url=in_csv)
+        # print('third group')
+        # ex_left_lung_top_y_value, ex_left_lung_bottom_y_value, ex_left_lung_max_height, ex_left_lung_max_height_image_index, ex_left_lung_left_x_value, ex_left_lung_right_x_value, ex_left_lung_max_width, ex_left_lung_max_width_image_index = get_in_or_ex_left_or_right_max_height_width(
+        #     position='left', csv_url=ex_csv)
+        # print('forth group')
+        # ex_right_lung_top_y_value, ex_right_lung_bottom_y_value, ex_right_lung_max_height, ex_right_lung_max_height_image_index, ex_right_lung_left_x_value, ex_right_lung_right_x_value, ex_right_lung_max_width, ex_right_lung_max_width_image_index = get_in_or_ex_left_or_right_max_height_width(
+        #     position='right', csv_url=ex_csv)
+        #
+        # df.at[index, 'in_left_lung_top_y_value'] = in_left_lung_top_y_value
+        # df.at[index, 'in_left_lung_bottom_y_value'] = in_left_lung_bottom_y_value
+        # df.at[index, 'in_left_lung_max_height (cm)'] = in_left_lung_max_height
+        # df.at[index, 'in_left_lung_max_height_image_index'] = in_left_lung_max_height_image_index
+        # df.at[index, 'in_left_lung_left_x_value'] = in_left_lung_left_x_value
+        # df.at[index, 'in_left_lung_right_x_value'] = in_left_lung_right_x_value
+        # df.at[index, 'in_left_lung_max_width (cm)'] = in_left_lung_max_width
+        # df.at[index, 'in_left_lung_max_width_image_index'] = in_left_lung_max_width_image_index
+        #
+        # df.at[index, 'in_right_lung_top_y_value'] = in_right_lung_top_y_value
+        # df.at[index, 'in_right_lung_bottom_y_value'] = in_right_lung_bottom_y_value
+        # df.at[index, 'in_right_lung_max_height (cm)'] = in_right_lung_max_height
+        # df.at[index, 'in_right_lung_max_height_image_index'] = in_right_lung_max_height_image_index
+        # df.at[index, 'in_right_lung_left_x_value'] = in_right_lung_right_x_value
+        # df.at[index, 'in_right_lung_right_x_value'] = in_right_lung_right_x_value
+        # df.at[index, 'in_right_lung_max_width (cm)'] = in_right_lung_max_width
+        # df.at[index, 'in_right_lung_max_width_image_index'] = in_right_lung_max_width_image_index
+        #
+        # df.at[index, 'ex_left_lung_top_y_value'] = ex_left_lung_top_y_value
+        # df.at[index, 'ex_left_lung_bottom_y_value'] = ex_left_lung_bottom_y_value
+        # df.at[index, 'ex_left_lung_max_height (cm)'] = ex_left_lung_max_height
+        # df.at[index, 'ex_left_lung_max_height_image_index'] = ex_left_lung_max_height_image_index
+        # df.at[index, 'ex_left_lung_left_x_value'] = ex_left_lung_left_x_value
+        # df.at[index, 'ex_left_lung_right_x_value'] = ex_left_lung_right_x_value
+        # df.at[index, 'ex_left_lung_max_width (cm)'] = ex_left_lung_max_width
+        # df.at[index, 'ex_left_lung_max_width_image_index'] = ex_left_lung_max_width_image_index
+        #
+        # df.at[index, 'ex_right_lung_top_y_value'] = ex_right_lung_top_y_value
+        # df.at[index, 'ex_right_lung_bottom_y_value'] = ex_right_lung_bottom_y_value
+        # df.at[index, 'ex_right_lung_max_height (cm)'] = ex_right_lung_max_height
+        # df.at[index, 'ex_right_lung_max_height_image_index'] = ex_right_lung_max_height_image_index
+        # df.at[index, 'ex_right_lung_left_x_value'] = ex_right_lung_left_x_value
+        # df.at[index, 'ex_right_lung_right_x_value'] = ex_right_lung_right_x_value
+        # df.at[index, 'ex_right_lung_max_width (cm)'] = ex_right_lung_max_width
+        # df.at[index, 'ex_right_lung_max_width_image_index'] = ex_right_lung_max_width_image_index
 
         end_time = timer()
         elapsed_time = end_time - start_time
@@ -254,7 +222,7 @@ def main() -> None:
             f'The total time to process the {patient_id} is {elapsed_time} seconds\n'
         )
 
-        df.to_csv('test/output.csv')
+        # df.to_csv('test/output.csv')
 
 
 if __name__ == '__main__':

@@ -94,3 +94,20 @@ def get_z_value(dicom_file_dataset: FileDataset) -> float:
         z_value += normal[i] * image_position_patient[i]
 
     return z_value
+
+
+def is_margin_row(row) -> bool:
+    for i in range(0, row.shape[0] - 1, 2):
+        a = row[i]
+        b = row[i + 1]
+        for j in range(a.shape[0]):
+            if a[j] != b[j]:
+                return False
+    return True
+
+
+# Get non-margin start and stop index
+def get_non_margin_row_index(image, index: int, step: int) -> int:
+    while is_margin_row(image[index]):
+        index += step
+    return index

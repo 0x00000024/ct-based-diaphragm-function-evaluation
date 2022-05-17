@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Build
+build
+
+# Library
+node_modules

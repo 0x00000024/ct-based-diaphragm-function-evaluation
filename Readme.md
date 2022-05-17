@@ -14,4 +14,4 @@ To run the program, open this folder in VSCode, and run the following commands:
 >
 > npm start 
 
-Then visit https://localhost:8080 in your web browser!
+Then visit http://localhost:8080 in your web browser!

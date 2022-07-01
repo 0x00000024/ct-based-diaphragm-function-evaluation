@@ -36,9 +36,4 @@ endif()
 # Creating entries for all C++ files with "main" routine
 # ##########################################################
 
-
-create_single_source_cgal_program( "draw_surface_mesh.cpp" )
-
 create_single_source_cgal_program( "main.cpp" )
-
-

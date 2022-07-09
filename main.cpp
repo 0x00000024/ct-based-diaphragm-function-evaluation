@@ -96,9 +96,8 @@ void get_one_side_mask(const Mesh &lung_base_mask_mesh, const std::string &direc
 
     std::cout << "The number of points generated: " << point_set.size() << std::endl;
 
-    std::filesystem::path lung_base_mask_3d_point_cloud_filename("lung_base_mask_" + direction + "_3d_point_cloud.ply");
-    std::filesystem::path lung_base_mask_3d_point_cloud_file_path =
-            result_dir_path / lung_base_mask_3d_point_cloud_filename;
+    std::filesystem::path lung_base_mask_3d_point_cloud_filename("5.lung_base_mask_" + direction + "_3d_point_cloud.ply");
+    std::filesystem::path lung_base_mask_3d_point_cloud_file_path = result_dir_path / lung_base_mask_3d_point_cloud_filename;
     CGAL::IO::write_PLY(lung_base_mask_3d_point_cloud_file_path, point_set);
     std::cout << "The generated file was saved to " << lung_base_mask_3d_point_cloud_file_path << std::endl;
 }
@@ -171,18 +170,18 @@ int main(int argc, char *argv[]) {
     std::filesystem::path point_cloud_filename(argv[2]);
     std::filesystem::path point_cloud_file_path =
             result_dir_path / point_cloud_filename;
-    std::filesystem::path mesh_filename("lung_base_mesh.ply");
+    std::filesystem::path mesh_filename("6.lung_base_mesh.ply");
     std::filesystem::path mesh_file_path = result_dir_path / mesh_filename;
     std::filesystem::path contact_point_cloud_filename(
-            "lung_diaphragm_contact_surface_3d_point_cloud.ply");
+            "7.lung_diaphragm_contact_surface_3d_point_cloud.ply");
     std::filesystem::path contact_point_cloud_file_path =
             result_dir_path / contact_point_cloud_filename;
     std::filesystem::path contact_point_cloud_outlier_removed_filename(
-            "lung_diaphragm_contact_surface_3d_point_cloud_outlier_removed.ply");
+            "8.lung_diaphragm_contact_surface_3d_point_cloud_outlier_removed(manually).ply");
     std::filesystem::path contact_point_cloud_outlier_removed_file_path =
             result_dir_path / contact_point_cloud_outlier_removed_filename;
     std::filesystem::path lung_base_mask_mesh_filename(
-            "lung_base_mask_mesh.ply");
+            "4.lung_base_mask_mesh(manually).ply");
     std::filesystem::path lung_base_mask_mesh_file_path =
             result_dir_path / lung_base_mask_mesh_filename;
 

@@ -162,7 +162,7 @@ int main(int argc, char *argv[]) {
     if (argc < 3) {
         std::cerr << "Usage: " << argv[0]
                   << " /root/diaphragm-evaluation/result/10003382/ex "
-                     "lung_base_3d_point_cloud.ply"
+                     "2.lung_base_3d_point_cloud.ply"
                   << std::endl;
     }
 

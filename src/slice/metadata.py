@@ -22,7 +22,9 @@ class Metadata:
                                                                0x1053].value)
         rows = self.rows
         columns = self.columns
-        self.pixel_data: NDArray[Shape[rows, columns], Int16] | None = None
+        # self.pixel_data: NDArray[Shape[rows, columns], Int16] | None = None
+        self.pixel_data: NDArray[Shape[rows, columns], Int8] | None = None
+        self.photometric_interpretation: str = self._dicom_file_dataset[0x28, 0x0004].value
         self.denoised_data: NDArray[Shape[rows, columns], Int8] | None = None
         self.slice_thickness: float | None = None
 
@@ -33,8 +35,10 @@ class Metadata:
 
     def load_special_data(self) -> None:
         self.pixel_data = self._dicom_file_dataset.pixel_array
-        self.denoised_data = cv.convertScaleAbs(self.pixel_data)
-        denoiser: Denoiser = Denoiser(self.rows, self.columns,
-                                      self.denoised_data)
-        self.denoised_data = denoiser.set_lungs_as_roi()
+
+        # if self.photometric_interpretation == 'RGB':
+        #     self.pixel_data = cv.cvtColor(self._dicom_file_dataset.pixel_array, cv.COLOR_BGR2GRAY)
+        # self.pixel_data = cv.convertScaleAbs(self._dicom_file_dataset.pixel_array)
+
         self.slice_thickness = float(self._dicom_file_dataset[0x18, 0x50].value)
+        # self.slice_thickness = 0.6

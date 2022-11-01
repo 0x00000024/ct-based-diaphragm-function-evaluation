@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  ct:
+    build:
+      context: .
+      args:
+        ROOT_PASSWORD: 1
+        CONDA_VERSION: py39_4.10.3
+        PUBLIC_KEY: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCyNW6QsKIJp63OHFzcBvnatVlEabYDquAymxipGr71pp2JrMGtlVcBSKOHYv8K9OUTwaNluftcBaGW5260Sqq3wC3GUYXL+7PnxuqUtdiFpKMaw/mALoeOG11R1abTjtoEsNwpvVWWtlt+nI+n0l1rsBsEVfz3rgskTgmtmApERPHfAFVsaN506W6PcuCtGkqn9SqM9TxNU/41Sq+l1LDClifBGKsZL4+UJxeJtoJiThCKECeqbtjKT+NMIq5bVdb+r+rfSu9F5ZaUxPx16/ixrQbxj/yNomAp9jRMwyIgmgZyQU+o4tv7jWOghx/1pghuaVUUgXN7zu6YyHJ+vhFIiatqHJIv2UcgAuokJ4XKyAPd3czyOYleaTjiaKXDCOiYAiPB9zow2wrvzPsagQFu6+OxWbao/4LGhGVs3RuxNMMKaRLUyWjvVu2YryZvjHp+dXI0yrDq+D3Po08piZppBsIuJEJQya7nPDgqHm4Q3h2bb7vhi5yq9BioN2DYuSM= ethan@Ethans-MacBook-Pro.local"
+
+    container_name: cgal
+    tty: true
+    ports:
+      - "2200:22"
+      - "33890:3389"
+    privileged: true
+    environment:
+      - XDG_RUNTIME_DIR=/tmp

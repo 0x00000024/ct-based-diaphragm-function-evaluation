@@ -27,7 +27,7 @@ image_width = None
 
 z_value = None
 
-# Use src/utils/hsv_thresholder.py to get the required upper and lower bounds
+# Use archived2/utils/hsv_thresholder.py to get the required upper and lower bounds
 # No need to reshape, it is used to help PyCharm perform code static analysis.
 left_lung_lower_boundary = np.array([81, 0, 111], dtype='uint8').reshape(1, 3)
 left_lung_upper_boundary = np.array([103, 111, 195],
